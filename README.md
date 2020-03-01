@@ -26,4 +26,3 @@ SpringBoot, Hibernate, Docker
 Endpoint documentation is available at https://bungie-net.github.io/multi/
 
 #### How to use?
-
