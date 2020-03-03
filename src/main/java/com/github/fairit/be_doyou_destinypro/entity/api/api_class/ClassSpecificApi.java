@@ -1,6 +1,7 @@
-package com.github.fairit.be_doyou_destinypro.entity.api_class;
+package com.github.fairit.be_doyou_destinypro.entity.api.api_class;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.fairit.be_doyou_destinypro.entity.api.DisplayProperties;
 
 public class ClassSpecificApi {
 
@@ -8,7 +9,7 @@ public class ClassSpecificApi {
     private byte classType;
 
     @JsonProperty("displayProperties")
-    private ClassDisplayProperties displayProperties;
+    private DisplayProperties displayProperties;
 
     @JsonProperty("hash")
     private Long hash;
@@ -17,7 +18,7 @@ public class ClassSpecificApi {
         return classType;
     }
 
-    public ClassDisplayProperties getDisplayProperties() {
+    public DisplayProperties getDisplayProperties() {
         return displayProperties;
     }
 

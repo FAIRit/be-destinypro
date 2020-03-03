@@ -1,6 +1,7 @@
-package com.github.fairit.be_doyou_destinypro.entity.api_gender;
+package com.github.fairit.be_doyou_destinypro.entity.api.api_gender;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.fairit.be_doyou_destinypro.entity.api.DisplayProperties;
 
 public class GenderSpecificApi {
 
@@ -8,7 +9,7 @@ public class GenderSpecificApi {
     private byte genderType;
 
     @JsonProperty("displayProperties")
-    private GenderDisplayProperties displayProperties;
+    private DisplayProperties displayProperties;
 
     @JsonProperty("hash")
     private Long hash;
@@ -17,7 +18,7 @@ public class GenderSpecificApi {
         return genderType;
     }
 
-    public GenderDisplayProperties getDisplayProperties() {
+    public DisplayProperties getDisplayProperties() {
         return displayProperties;
     }
 

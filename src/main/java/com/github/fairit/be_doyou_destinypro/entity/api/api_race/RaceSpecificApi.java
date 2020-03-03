@@ -1,17 +1,18 @@
-package com.github.fairit.be_doyou_destinypro.entity.api_race;
+package com.github.fairit.be_doyou_destinypro.entity.api.api_race;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.fairit.be_doyou_destinypro.entity.api.DisplayProperties;
 
 public class RaceSpecificApi {
 
     @JsonProperty("displayProperties")
-    private RaceDisplayProperties displayProperties;
+    private DisplayProperties displayProperties;
     @JsonProperty("raceType")
     private byte raceType;
     @JsonProperty("hash")
     private Long hash;
 
-    public RaceDisplayProperties getRaceDisplayProperties() {
+    public DisplayProperties getDisplayProperties() {
         return displayProperties;
     }
 

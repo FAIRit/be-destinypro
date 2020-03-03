@@ -1,9 +1,9 @@
 
-package com.github.fairit.be_doyou_destinypro.entity.api_race;
+package com.github.fairit.be_doyou_destinypro.entity.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class RaceDisplayProperties {
+public class DisplayProperties {
 
     @JsonProperty("description")
     private String description;

@@ -1,4 +1,4 @@
-package com.github.fairit.be_doyou_destinypro.entity.api_gender;
+package com.github.fairit.be_doyou_destinypro.entity.api.api_gender;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;

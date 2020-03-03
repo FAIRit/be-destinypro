@@ -1,4 +1,4 @@
-package com.github.fairit.be_doyou_destinypro.entity.api_race;
+package com.github.fairit.be_doyou_destinypro.entity.api.api_race;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
