@@ -7,9 +7,9 @@ Bungie.net allows users to create fireteams. Sometimes we can't determine the sk
 
 #### Features
 
-_**Must have:**_ https://github.com/FAIRit/be-doYou_destinyPRO/issues?q=is%3Aissue+is%3Aopen+label%3A%22must+have%22
+[**Must have**](https://github.com/FAIRit/be-doYou_destinyPRO/issues?q=is%3Aissue+is%3Aopen+label%3A%22must+have%22)
 
-_**Nice to have:**_ https://github.com/FAIRit/be-doYou_destinyPRO/issues?q=is%3Aissue+is%3Aopen+label%3A%22nice+to+have%22
+[**Nice to have**](https://github.com/FAIRit/be-doYou_destinyPRO/issues?q=is%3Aissue+is%3Aopen+label%3A%22nice+to+have%22)
 
 #### Screenshots
 
@@ -26,4 +26,3 @@ SpringBoot, Hibernate, Docker
 Endpoint documentation is available at https://bungie-net.github.io/multi/
 
 #### How to use?
-
