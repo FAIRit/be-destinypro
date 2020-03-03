@@ -15,8 +15,8 @@ public class PlayerService {
         this.playerApiService = playerApiService;
     }
 
-    public PlayerApi findByPlayerNickname(Player player) {
-
-        return playerApiService.findPlayerApiByNickname(player.getNickname());
+    public PlayerApi findPlayerByNickname(String nickname) {
+        return playerApiService.findPlayerApiByNickname(nickname);
     }
+
 }

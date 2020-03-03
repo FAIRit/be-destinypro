@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 public class Response {
 
     @JsonProperty("membershipType")
-    private Integer membershipType;
+    private Byte membershipType;
 
     @JsonProperty("membershipId")
     private String membershipId;
@@ -15,7 +15,7 @@ public class Response {
     @JsonProperty("displayName")
     private String displayName;
 
-    public Integer getMembershipType() {
+    public Byte getMembershipType() {
         return membershipType;
     }
 
