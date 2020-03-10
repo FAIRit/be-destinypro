@@ -15,7 +15,7 @@ public class ClassEntity {
     private Long hash;
 
     @JoinColumn(name = "properties_id")
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private DisplayPropertiesEntity properties;
 
     public Long getHash() {
