@@ -16,16 +16,17 @@ public class RaceDefinitionService {
 
     private RaceDefinitionApiService raceApiService;
     private RaceRepository raceRepository;
+    private ModelMapper modelMapper;
 
     @Autowired
-    public RaceDefinitionService(final RaceDefinitionApiService raceApiService, final RaceRepository raceRepository) {
+    public RaceDefinitionService(final RaceDefinitionApiService raceApiService, final RaceRepository raceRepository, ModelMapper modelMapper) {
         this.raceApiService = raceApiService;
         this.raceRepository = raceRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Transactional
     public void saveRaceDefinitionInDB() {
-        ModelMapper modelMapper = new ModelMapper();
         List<RaceEntity> raceEntityList = new ArrayList<>();
 
         for (final RaceSpecificApi raceSpecificApi : raceApiService.getListOfRaceDefinition()) {

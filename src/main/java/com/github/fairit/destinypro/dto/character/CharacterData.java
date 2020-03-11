@@ -18,27 +18,47 @@ public class CharacterData {
         return membershipId;
     }
 
-    public void setMembershipId(final String membershipId) {
+    public void setMembershipId(String membershipId) {
         this.membershipId = membershipId;
     }
 
-    public void setMembershipType(final Byte membershipType) {
+    public Byte getMembershipType() {
+        return membershipType;
+    }
+
+    public void setMembershipType(Byte membershipType) {
         this.membershipType = membershipType;
     }
 
-    public void setCharacterId(final String characterId) {
+    public String getCharacterId() {
+        return characterId;
+    }
+
+    public void setCharacterId(String characterId) {
         this.characterId = characterId;
     }
 
-    public void setRaceName(final String raceName) {
+    public String getRaceName() {
+        return raceName;
+    }
+
+    public void setRaceName(String raceName) {
         this.raceName = raceName;
     }
 
-    public void setGenderName(final String genderName) {
+    public String getGenderName() {
+        return genderName;
+    }
+
+    public void setGenderName(String genderName) {
         this.genderName = genderName;
     }
 
-    public void setClassName(final String className) {
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
         this.className = className;
     }
 }

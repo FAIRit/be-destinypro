@@ -16,16 +16,17 @@ public class ClassDefinitionService {
 
     private ClassDefinitionApiService classApiService;
     private ClassRepository classRepository;
+    private ModelMapper modelMapper;
 
     @Autowired
-    public ClassDefinitionService(final ClassDefinitionApiService classApiService, final ClassRepository classRepository) {
+    public ClassDefinitionService(final ClassDefinitionApiService classApiService, final ClassRepository classRepository, ModelMapper modelMapper) {
         this.classApiService = classApiService;
         this.classRepository = classRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Transactional
     public void saveClassDefinitionInDB() {
-        ModelMapper modelMapper = new ModelMapper();
         List<ClassEntity> classEntityList = new ArrayList<>();
 
         for (final ClassSpecificApi classSpecificApi : classApiService.getListOfClassDefinition()) {

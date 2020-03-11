@@ -16,7 +16,8 @@ public class DatabaseController {
     private RaceDefinitionService raceService;
 
     @Autowired
-    public DatabaseController(final ClassDefinitionService classService, final GenderDefinitionService genderService, final RaceDefinitionService raceService) {
+    public DatabaseController(final ClassDefinitionService classService, final GenderDefinitionService genderService,
+                              final RaceDefinitionService raceService) {
         this.classService = classService;
         this.genderService = genderService;
         this.raceService = raceService;

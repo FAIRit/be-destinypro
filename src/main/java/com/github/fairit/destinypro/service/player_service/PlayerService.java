@@ -17,5 +17,4 @@ public class PlayerService {
     public PlayerApi findPlayerByNickname(String nickname) {
         return playerApiService.findPlayerApiByNickname(nickname);
     }
-
 }

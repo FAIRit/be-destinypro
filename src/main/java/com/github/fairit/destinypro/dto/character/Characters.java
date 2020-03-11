@@ -2,14 +2,12 @@ package com.github.fairit.destinypro.dto.character;
 
 import java.util.List;
 
-public class Character {
-
-    private String characterId;
+public class Characters {
 
     private List<CharacterData> characterDataList;
 
-    public String getCharacterId() {
-        return characterId;
+    public Characters(List<CharacterData> characterDataList) {
+        this.characterDataList = characterDataList;
     }
 
     public List<CharacterData> getCharacterDataList() {

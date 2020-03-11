@@ -16,16 +16,17 @@ public class GenderDefinitionService {
 
     private GenderDefinitionApiService genderApiService;
     private GenderRepository genderRepository;
+    private ModelMapper modelMapper;
 
     @Autowired
-    public GenderDefinitionService(final GenderDefinitionApiService genderApiService, final GenderRepository genderRepository) {
+    public GenderDefinitionService(final GenderDefinitionApiService genderApiService, final GenderRepository genderRepository, ModelMapper modelMapper) {
         this.genderApiService = genderApiService;
         this.genderRepository = genderRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Transactional
     public void saveGenderDefinitionInDB() {
-        ModelMapper modelMapper = new ModelMapper();
         List<GenderEntity> genderEntityList = new ArrayList<>();
 
         for (final GenderSpecificApi genderSpecificApi : genderApiService.getListOfGenderDefinition()) {

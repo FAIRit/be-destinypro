@@ -1,5 +1,6 @@
 package com.github.fairit.destinypro;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -18,8 +19,12 @@ public class BeDoyouDestinyproApplication {
         return new RestTemplate();
     }
 
-    @Bean
+   @Bean
     public HttpHeaders getHttpHeaders() {
         return new HttpHeaders();
+    }
+    @Bean
+    public ModelMapper getModelMapper() {
+        return new ModelMapper();
     }
 }

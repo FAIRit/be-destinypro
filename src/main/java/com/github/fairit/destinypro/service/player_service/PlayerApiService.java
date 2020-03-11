@@ -5,7 +5,6 @@ import com.github.fairit.destinypro.dto.player.api.PlayerApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -25,10 +24,9 @@ public class PlayerApiService {
     }
 
     public PlayerApi findPlayerApiByNickname(String nickname) {
-
         String addressURL = playerApiAddress.replace("{nickname}", nickname);
-        ResponseEntity<PlayerApi> exchange = restTemplate
-                .exchange(addressURL, HttpMethod.GET, httpConfig.getHttpEntity(), PlayerApi.class, 1);
-        return exchange.getBody();
+        return restTemplate
+                .exchange(addressURL, HttpMethod.GET, httpConfig.getHttpEntity(), PlayerApi.class, 1)
+                .getBody();
     }
 }
