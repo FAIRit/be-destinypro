@@ -14,6 +14,8 @@ public class CharacterData {
 
     private String className;
 
+    private Short light;
+
     public String getMembershipId() {
         return membershipId;
     }
@@ -60,5 +62,13 @@ public class CharacterData {
 
     public void setClassName(String className) {
         this.className = className;
+    }
+
+    public Short getLight() {
+        return light;
+    }
+
+    public void setLight(Short light) {
+        this.light = light;
     }
 }

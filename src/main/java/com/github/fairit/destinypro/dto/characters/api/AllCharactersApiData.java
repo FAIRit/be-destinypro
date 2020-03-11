@@ -22,6 +22,9 @@ public class AllCharactersApiData {
     @JsonProperty("classHash")
     private Long classHash;
 
+    @JsonProperty("light")
+    private Short light;
+
     public String getMembershipId() {
         return membershipId;
     }
@@ -32,6 +35,10 @@ public class AllCharactersApiData {
 
     public String getCharacterId() {
         return characterId;
+    }
+
+    public Short getLight() {
+        return light;
     }
 
     public Long getRaceHash() {
