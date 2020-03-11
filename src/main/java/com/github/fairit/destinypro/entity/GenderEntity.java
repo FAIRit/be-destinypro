@@ -7,22 +7,27 @@ import javax.persistence.*;
 public class GenderEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "gender_id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long genderId;
 
-    @Column(name = "hash")
     private Long hash;
 
-    @JoinColumn(name = "properties_id")
     @ManyToOne(cascade = CascadeType.ALL)
     private DisplayPropertiesEntity properties;
+
+    public Long getGenderId() {
+        return genderId;
+    }
+
+    public void setGenderId(Long genderId) {
+        this.genderId = genderId;
+    }
 
     public Long getHash() {
         return hash;
     }
 
-    public void setHash(final Long hash) {
+    public void setHash(Long hash) {
         this.hash = hash;
     }
 
@@ -30,7 +35,7 @@ public class GenderEntity {
         return properties;
     }
 
-    public void setProperties(final DisplayPropertiesEntity properties) {
+    public void setProperties(DisplayPropertiesEntity properties) {
         this.properties = properties;
     }
 }

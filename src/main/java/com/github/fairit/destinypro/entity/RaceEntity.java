@@ -7,22 +7,27 @@ import javax.persistence.*;
 public class RaceEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "race_id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long raceId;
 
-    @Column(name = "hash")
     private Long hash;
 
-    @JoinColumn(name = "properties_id")
     @ManyToOne(cascade = CascadeType.ALL)
     private DisplayPropertiesEntity properties;
+
+    public Long getRaceId() {
+        return raceId;
+    }
+
+    public void setRaceId(Long raceId) {
+        this.raceId = raceId;
+    }
 
     public Long getHash() {
         return hash;
     }
 
-    public void setHash(final Long hash) {
+    public void setHash(Long hash) {
         this.hash = hash;
     }
 
@@ -30,7 +35,7 @@ public class RaceEntity {
         return properties;
     }
 
-    public void setProperties(final DisplayPropertiesEntity properties) {
+    public void setProperties(DisplayPropertiesEntity properties) {
         this.properties = properties;
     }
 }

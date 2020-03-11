@@ -22,7 +22,7 @@ public class GenderDefinitionApiService {
     public List<GenderSpecificApi> getListOfGenderDefinition() {
 
         String genderDefinitionApiAddress
-                = "https://www.bungie.net/common/destiny2_content/json/en/DestinyGenderDefinition-2fbe1829-dfcd-44ec-84d3-bb04a3777dc1.json";
+                = "https://www.bungie.net/common/destiny2_content/json/en/DestinyGenderDefinition-39a4e3a0-efbe-4356-beca-d87271a5c699.json";
         GenderApi genderApiObject = restTemplate.getForObject(genderDefinitionApiAddress, GenderApi.class);
 
         List<GenderSpecificApi> listOfGenderDefinition = new ArrayList<>();

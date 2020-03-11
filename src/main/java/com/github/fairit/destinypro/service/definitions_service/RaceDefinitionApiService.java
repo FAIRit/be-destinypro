@@ -21,7 +21,7 @@ public class RaceDefinitionApiService {
 
     public List<RaceSpecificApi> getListOfRaceDefinition() {
         String raceDefinitionApiAddress
-                = "https://www.bungie.net/common/destiny2_content/json/en/DestinyRaceDefinition-2fbe1829-dfcd-44ec-84d3-bb04a3777dc1.json";
+                = "https://www.bungie.net/common/destiny2_content/json/en/DestinyRaceDefinition-39a4e3a0-efbe-4356-beca-d87271a5c699.json";
         RaceApi raceApiObject = restTemplate.getForObject(raceDefinitionApiAddress, RaceApi.class);
 
         List<RaceSpecificApi> listOfRaceDefinition = new ArrayList<>();

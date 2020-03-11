@@ -7,25 +7,25 @@ import javax.persistence.*;
 public class DisplayPropertiesEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "properties_id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long propertiesId;
 
-    @Column(name = "description")
     private String description;
-
-    @Column(name = "name")
     private String name;
 
-    public Long getId() {
-        return id;
+    public Long getPropertiesId() {
+        return propertiesId;
+    }
+
+    public void setPropertiesId(Long propertiesId) {
+        this.propertiesId = propertiesId;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(final String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -33,7 +33,7 @@ public class DisplayPropertiesEntity {
         return name;
     }
 
-    public void setName(final String name) {
+    public void setName(String name) {
         this.name = name;
     }
 }
