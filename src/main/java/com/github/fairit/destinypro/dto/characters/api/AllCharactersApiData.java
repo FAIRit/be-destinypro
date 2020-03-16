@@ -25,6 +25,9 @@ public class AllCharactersApiData {
     @JsonProperty("light")
     private Short light;
 
+    @JsonProperty("stats")
+    private Stats characterStats;
+
     public String getMembershipId() {
         return membershipId;
     }
@@ -39,6 +42,14 @@ public class AllCharactersApiData {
 
     public Short getLight() {
         return light;
+    }
+
+    public Stats getCharacterStats() {
+        return characterStats;
+    }
+
+    public void setCharacterStats(Stats characterStats) {
+        this.characterStats = characterStats;
     }
 
     public Long getRaceHash() {
