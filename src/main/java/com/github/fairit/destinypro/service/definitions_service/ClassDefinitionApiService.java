@@ -13,16 +13,17 @@ import java.util.List;
 public class ClassDefinitionApiService {
 
     private RestTemplate restTemplate;
+    private DefinitionsUrlApiService definitionsUrlApiService;
 
     @Autowired
-    public ClassDefinitionApiService(final RestTemplate restTemplate) {
+    public ClassDefinitionApiService(final RestTemplate restTemplate, DefinitionsUrlApiService definitionsUrlApiService) {
         this.restTemplate = restTemplate;
+        this.definitionsUrlApiService = definitionsUrlApiService;
     }
 
     public List<ClassSpecificApi> getListOfClassDefinition() {
-        String classDefinitionApiAddress
-                = "https://www.bungie.net/common/destiny2_content/json/en/DestinyClassDefinition-39a4e3a0-efbe-4356-beca-d87271a5c699.json";
-        ClassApi classApiObject = restTemplate.getForObject(classDefinitionApiAddress, ClassApi.class);
+         ClassApi classApiObject = restTemplate
+                 .getForObject(definitionsUrlApiService.getClassApiAddress(), ClassApi.class);
 
         List<ClassSpecificApi> listOfClassDefinition = new ArrayList<>();
         if (classApiObject != null) {

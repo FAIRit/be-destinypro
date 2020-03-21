@@ -13,16 +13,17 @@ import java.util.List;
 public class RaceDefinitionApiService {
 
     private RestTemplate restTemplate;
+    private DefinitionsUrlApiService definitionsUrlApiService;
 
     @Autowired
-    public RaceDefinitionApiService(final RestTemplate restTemplate) {
+    public RaceDefinitionApiService(final RestTemplate restTemplate, DefinitionsUrlApiService definitionsUrlApiService) {
         this.restTemplate = restTemplate;
+        this.definitionsUrlApiService = definitionsUrlApiService;
     }
 
     public List<RaceSpecificApi> getListOfRaceDefinition() {
-        String raceDefinitionApiAddress
-                = "https://www.bungie.net/common/destiny2_content/json/en/DestinyRaceDefinition-39a4e3a0-efbe-4356-beca-d87271a5c699.json";
-        RaceApi raceApiObject = restTemplate.getForObject(raceDefinitionApiAddress, RaceApi.class);
+        RaceApi raceApiObject = restTemplate
+                .getForObject(definitionsUrlApiService.getRaceApiAddress(), RaceApi.class);
 
         List<RaceSpecificApi> listOfRaceDefinition = new ArrayList<>();
         if (raceApiObject != null) {

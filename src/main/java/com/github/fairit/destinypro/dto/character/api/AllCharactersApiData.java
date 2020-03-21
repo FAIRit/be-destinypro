@@ -1,4 +1,4 @@
-package com.github.fairit.destinypro.dto.characters.api;
+package com.github.fairit.destinypro.dto.character.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
