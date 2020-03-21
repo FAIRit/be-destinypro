@@ -1,4 +1,4 @@
-package com.github.fairit.destinypro.dto.pve_pvp_stats;
+package com.github.fairit.destinypro.dto.pve_pvp_stats.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
