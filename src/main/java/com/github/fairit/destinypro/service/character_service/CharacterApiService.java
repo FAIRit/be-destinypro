@@ -4,6 +4,7 @@ import com.github.fairit.destinypro.config.HttpConfig;
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiData;
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiResponse;
 import com.github.fairit.destinypro.dto.player.api.PlayerApi;
+import com.github.fairit.destinypro.exception.ApiNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
@@ -47,7 +48,7 @@ public class CharacterApiService {
         if (characterApi != null) {
             return characterApi.getResponse().getCharacter().getCharacterData();
         }
-        throw new RuntimeException("Problem with reading characters map from API");
+        throw new ApiNotFoundException(AllCharactersApiData.class);
     }
 
     private String getCorrectCharacterApiAddress(final PlayerApi playerApi) {

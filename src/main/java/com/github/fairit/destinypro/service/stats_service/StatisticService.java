@@ -4,76 +4,43 @@ import com.github.fairit.destinypro.dto.character.CharacterData;
 import com.github.fairit.destinypro.dto.pve_pvp_stats.CharacterActivityStats;
 import com.github.fairit.destinypro.dto.pve_pvp_stats.CharacterPve;
 import com.github.fairit.destinypro.dto.pve_pvp_stats.CharacterPvp;
-import com.github.fairit.destinypro.dto.pve_pvp_stats.api.Activities;
-import com.github.fairit.destinypro.dto.pve_pvp_stats.api.PvpAndPveStats;
+import com.github.fairit.destinypro.dto.pve_pvp_stats.api.ActivityStatsApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class StatisticService {
 
     private StatisticApiService statisticApiService;
+    private AverageStatisticService averageStatisticService;
 
     @Autowired
-    public StatisticService(StatisticApiService statisticApiService) {
+    public StatisticService(StatisticApiService statisticApiService, AverageStatisticService averageStatisticService) {
         this.statisticApiService = statisticApiService;
+        this.averageStatisticService = averageStatisticService;
     }
 
     public CharacterPvp getAveragedCharacterPvpActivitiesStats(CharacterData character) {
 
-        PvpAndPveStats pvpCharacterStats = statisticApiService.getPvpStatsForGivenCharacter(character);
+        ActivityStatsApi pvpCharacterStats = statisticApiService.getPvpStatsForGivenCharacter(character);
         CharacterActivityStats stats = new CharacterActivityStats();
 
-        stats.setAverageAssists(getAverageAssists(pvpCharacterStats));
-        stats.setAverageKills(getAverageKills(pvpCharacterStats));
-        stats.setAverageDeaths(getAverageDeaths(pvpCharacterStats));
-        stats.setAverageKillsDeathsRatio(getAverageKillsDeathsRatio(pvpCharacterStats));
+        stats.setAverageAssists(averageStatisticService.getAverageAssists(pvpCharacterStats));
+        stats.setAverageKills(averageStatisticService.getAverageKills(pvpCharacterStats));
+        stats.setAverageDeaths(averageStatisticService.getAverageDeaths(pvpCharacterStats));
+        stats.setAverageKillsDeathsRatio(averageStatisticService.getAverageKillsDeathsRatio(pvpCharacterStats));
         return new CharacterPvp(stats);
     }
 
     public CharacterPve getAveragedCharacterPveActivitiesStats(CharacterData character) {
 
-        PvpAndPveStats pveCharacterStats = statisticApiService.getPveStatsForGivenCharacter(character);
+        ActivityStatsApi pveCharacterStats = statisticApiService.getPveStatsForGivenCharacter(character);
         CharacterActivityStats stats = new CharacterActivityStats();
 
-        stats.setAverageAssists(getAverageAssists(pveCharacterStats));
-        stats.setAverageKills(getAverageKills(pveCharacterStats));
-        stats.setAverageDeaths(getAverageDeaths(pveCharacterStats));
-        stats.setAverageKillsDeathsRatio(getAverageKillsDeathsRatio(pveCharacterStats));
+        stats.setAverageAssists(averageStatisticService.getAverageAssists(pveCharacterStats));
+        stats.setAverageKills(averageStatisticService.getAverageKills(pveCharacterStats));
+        stats.setAverageDeaths(averageStatisticService.getAverageDeaths(pveCharacterStats));
+        stats.setAverageKillsDeathsRatio(averageStatisticService.getAverageKillsDeathsRatio(pveCharacterStats));
         return new CharacterPve(stats);
-    }
-
-    private List<Activities> getListOfActivitiesFromApi(PvpAndPveStats stats) {
-        return stats.getResponse().getActivities();
-    }
-
-    private double getAverageKills(PvpAndPveStats stats) {
-        return getListOfActivitiesFromApi(stats)
-                .stream()
-                .mapToDouble(a -> a.getValues().getKills().getBasic().getValue())
-                .average().getAsDouble();
-    }
-
-    private double getAverageDeaths(PvpAndPveStats stats) {
-        return getListOfActivitiesFromApi(stats)
-                .stream()
-                .mapToDouble(a -> a.getValues().getDeaths().getBasic().getValue())
-                .average().getAsDouble();
-    }
-
-    private double getAverageAssists(PvpAndPveStats stats) {
-        return getListOfActivitiesFromApi(stats)
-                .stream()
-                .mapToDouble(a -> a.getValues().getAssists().getBasic().getValue())
-                .average().getAsDouble();
-    }
-
-    private double getAverageKillsDeathsRatio(PvpAndPveStats stats) {
-        return getListOfActivitiesFromApi(stats)
-                .stream()
-                .mapToDouble(a -> a.getValues().getKillsDeathsRatio().getBasic().getValue())
-                .average().getAsDouble();
     }
 }

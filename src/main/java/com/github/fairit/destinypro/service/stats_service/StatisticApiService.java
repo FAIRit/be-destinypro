@@ -2,7 +2,7 @@ package com.github.fairit.destinypro.service.stats_service;
 
 import com.github.fairit.destinypro.config.HttpConfig;
 import com.github.fairit.destinypro.dto.character.CharacterData;
-import com.github.fairit.destinypro.dto.pve_pvp_stats.api.PvpAndPveStats;
+import com.github.fairit.destinypro.dto.pve_pvp_stats.api.ActivityStatsApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
@@ -27,17 +27,17 @@ public class StatisticApiService {
         this.httpConfig = httpConfig;
     }
 
-    public PvpAndPveStats getPvpStatsForGivenCharacter(CharacterData character) {
+    public ActivityStatsApi getPvpStatsForGivenCharacter(CharacterData character) {
         return restTemplate
                 .exchange(getCorrectedApiAddressWithReplacements(pvpApiAddress, character),
-                        HttpMethod.GET, httpConfig.getHttpEntity(), PvpAndPveStats.class, 1)
+                        HttpMethod.GET, httpConfig.getHttpEntity(), ActivityStatsApi.class, 1)
                 .getBody();
     }
 
-    public PvpAndPveStats getPveStatsForGivenCharacter(CharacterData character) {
+    public ActivityStatsApi getPveStatsForGivenCharacter(CharacterData character) {
         return restTemplate
                 .exchange(getCorrectedApiAddressWithReplacements(pveApiAddress, character),
-                        HttpMethod.GET, httpConfig.getHttpEntity(), PvpAndPveStats.class, 1)
+                        HttpMethod.GET, httpConfig.getHttpEntity(), ActivityStatsApi.class, 1)
                 .getBody();
     }
 
