@@ -11,7 +11,7 @@
     <groupId>com.github.fairit</groupId>
     <artifactId>be_doyou_destinypro</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>be_doyou_destinypro</name>
+    <name>destinypro</name>
     <description>Destiny 2 player search application. It presents basic statistics of a given player.</description>
 
     <properties>
@@ -48,6 +48,12 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

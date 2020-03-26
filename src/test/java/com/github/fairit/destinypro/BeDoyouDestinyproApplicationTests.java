@@ -1,13 +1,10 @@
 package com.github.fairit.destinypro;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import com.github.fairit.destinypro.controller.PlayerControllerTest;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
-@SpringBootTest
-class BeDoyouDestinyproApplicationTests {
-
-    @Test
-    void contextLoads() {
-    }
-
+@RunWith(Suite.class)
+@Suite.SuiteClasses({PlayerControllerTest.class})
+public class BeDoyouDestinyproApplicationTests {
 }
