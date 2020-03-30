@@ -16,6 +16,16 @@ public class CharacterData {
 
     private Short light;
 
+    private CharacterGeneralStats characterGeneralStats;
+
+    public CharacterGeneralStats getCharacterGeneralStats() {
+        return characterGeneralStats;
+    }
+
+    public void setCharacterGeneralStats(CharacterGeneralStats characterGeneralStats) {
+        this.characterGeneralStats = characterGeneralStats;
+    }
+
     public String getMembershipId() {
         return membershipId;
     }

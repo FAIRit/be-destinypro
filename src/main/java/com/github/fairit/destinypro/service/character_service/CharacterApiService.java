@@ -1,8 +1,8 @@
 package com.github.fairit.destinypro.service.character_service;
 
 import com.github.fairit.destinypro.config.HttpConfig;
-import com.github.fairit.destinypro.dto.characters.api.AllCharactersApiData;
-import com.github.fairit.destinypro.dto.characters.api.AllCharactersApiResponse;
+import com.github.fairit.destinypro.dto.character.api.AllCharactersApiData;
+import com.github.fairit.destinypro.dto.character.api.AllCharactersApiResponse;
 import com.github.fairit.destinypro.dto.player.api.PlayerApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

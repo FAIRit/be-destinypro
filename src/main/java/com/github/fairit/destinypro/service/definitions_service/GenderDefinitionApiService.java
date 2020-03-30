@@ -13,17 +13,17 @@ import java.util.List;
 public class GenderDefinitionApiService {
 
     private RestTemplate restTemplate;
+    private DefinitionsUrlApiService definitionsUrlApiService;
 
     @Autowired
-    public GenderDefinitionApiService(final RestTemplate restTemplate) {
+    public GenderDefinitionApiService(final RestTemplate restTemplate, DefinitionsUrlApiService definitionsUrlApiService) {
         this.restTemplate = restTemplate;
+        this.definitionsUrlApiService = definitionsUrlApiService;
     }
 
     public List<GenderSpecificApi> getListOfGenderDefinition() {
-
-        String genderDefinitionApiAddress
-                = "https://www.bungie.net/common/destiny2_content/json/en/DestinyGenderDefinition-39a4e3a0-efbe-4356-beca-d87271a5c699.json";
-        GenderApi genderApiObject = restTemplate.getForObject(genderDefinitionApiAddress, GenderApi.class);
+         GenderApi genderApiObject = restTemplate
+                 .getForObject(definitionsUrlApiService.getGenderApiAddress(), GenderApi.class);
 
         List<GenderSpecificApi> listOfGenderDefinition = new ArrayList<>();
         if (genderApiObject != null) {
