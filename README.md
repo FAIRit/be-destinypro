@@ -43,9 +43,9 @@ Possible endpoints:
 
 POST
 
-localhost:8080/findplayer/{nickname}
-localhost:8080/findplayer/{nickname}/pvpstats/{characterID}
-localhost:8080/findplayer/{nickname}/pvestats/{characterID}
+`localhost:8080/findplayer/{nickname}`
+`localhost:8080/findplayer/{nickname}/pvpstats/{characterID}`
+`localhost:8080/findplayer/{nickname}/pvestats/{characterID}`
 
 For example:
 
