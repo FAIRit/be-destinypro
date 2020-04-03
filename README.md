@@ -21,6 +21,14 @@ SpringBoot, Hibernate, Docker
 
 #### Installation
 
+To run App locally, firstly you need build project with Maven:
+
+`$ mvn install`
+
+Secondly witch installed Java run project:
+
+`$ java -jar target/be_doyou_destinypro-0.0.1-SNAPSHOT.jar`
+
 #### API Documentation
 
 Endpoint documentation is available at https://bungie-net.github.io/multi/
