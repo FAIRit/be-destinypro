@@ -2,6 +2,7 @@ package com.github.fairit.destinypro.service.definitions_service;
 
 import com.github.fairit.destinypro.dto.destiny_manifest.DestinyManifestUrl;
 import com.github.fairit.destinypro.dto.destiny_manifest.EnglishJsonURL;
+import com.github.fairit.destinypro.exception.ApiNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -39,6 +40,6 @@ public class DefinitionsUrlApiService {
         if (destinyManifestUrl != null) {
             return destinyManifestUrl.getResponse().getJsonComponentPath().getEnglishJsonURL();
         }
-        throw new RuntimeException("Problem with reading DestinyManifest");
+        throw new ApiNotFoundException(EnglishJsonURL.class);
     }
 }
