@@ -25,7 +25,7 @@ To run App locally, firstly you need build project with Maven:
 
 `$ mvn install`
 
-Secondly witch installed Java run project:
+Secondly with installed Java run project:
 
 `$ java -jar target/be_doyou_destinypro-0.0.1-SNAPSHOT.jar`
 
