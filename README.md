@@ -21,6 +21,8 @@ SpringBoot, Hibernate, Docker
 
 #### Installation
 
+Needed: Java, Maven, Docker
+
 To run App locally, firstly you need build project with Maven:
 
 `$ mvn install`
