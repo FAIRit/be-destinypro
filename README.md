@@ -11,10 +11,6 @@ Bungie.net allows users to create fireteams. Sometimes we can't determine the sk
 
 [**Nice to have**](https://github.com/FAIRit/be-doYou_destinyPRO/issues?q=is%3Aissue+is%3Aopen+label%3A%22nice+to+have%22)
 
-#### Screenshots
-
-soon :)
-
 #### Tech/framework used
 
 SpringBoot, Hibernate, Docker
@@ -43,11 +39,13 @@ Possible endpoints:
 
 POST
 
-`localhost:8080/findplayer/{nickname}`
-`localhost:8080/findplayer/{nickname}/pvpstats/{characterID}`
-`localhost:8080/findplayer/{nickname}/pvestats/{characterID}`
+localhost:8080/findplayer/{nickname}
 
-For example:
+localhost:8080/findplayer/{nickname}/pvpstats/{characterID}
+
+localhost:8080/findplayer/{nickname}/pvestats/{characterID}
+
+EXAMPLE VALUES
 
 nickname: katojido
 
