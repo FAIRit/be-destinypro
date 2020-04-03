@@ -21,6 +21,8 @@ SpringBoot, Hibernate, Docker
 
 #### Installation
 
+Needed: Java, Maven, Docker
+
 To run App locally, firstly you need build project with Maven:
 
 `$ mvn install`
@@ -34,3 +36,19 @@ Secondly with installed Java run project:
 Endpoint documentation is available at https://bungie-net.github.io/multi/
 
 #### How to use?
+
+If the application is already installed and running.
+
+Possible endpoints:
+
+POST
+
+localhost:8080/findplayer/{nickname}
+localhost:8080/findplayer/{nickname}/pvpstats/{characterID}
+localhost:8080/findplayer/{nickname}/pvestats/{characterID}
+
+For example:
+
+nickname: katojido
+
+characterID: 2305843009410040403
