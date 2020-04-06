@@ -35,7 +35,7 @@ public class DefinitionsUrlApiService {
         return BUNGIE_ADDRESS + getJsonURL().getGenderDefinitionURLAddress();
     }
 
-    private EnglishJsonURL getJsonURL() {
+    private EnglishJsonURL getJsonURL(){
         DestinyManifestUrl destinyManifestUrl = restTemplate.getForObject(destinyManifestApiAddress, DestinyManifestUrl.class);
         if (destinyManifestUrl != null) {
             return destinyManifestUrl.getResponse().getJsonComponentPath().getEnglishJsonURL();
