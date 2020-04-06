@@ -11,13 +11,9 @@ import org.springframework.web.client.RestTemplate;
 public class ApplicationConfig {
 
     public HttpEntity getHttpEntity() {
-        getHttpHeaders().set("x-api-key", "188bb3eb49644d198f0111661ebb8f69");
-        return new HttpEntity(getHttpHeaders());
-    }
-
-    @Bean
-    public HttpHeaders getHttpHeaders() {
-        return new HttpHeaders();
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.set("x-api-key", "188bb3eb49644d198f0111661ebb8f69");
+        return new HttpEntity(httpHeaders);
     }
 
     @Bean
