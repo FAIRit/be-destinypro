@@ -13,13 +13,13 @@ public class DefinitionsUrlApiService {
 
     private static final String BUNGIE_ADDRESS = "https://www.bungie.net/";
 
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
     @Value("${api.bungie.address.destinymanifest}")
     private String destinyManifestApiAddress;
 
     @Autowired
-    public DefinitionsUrlApiService(RestTemplate restTemplate) {
+    public DefinitionsUrlApiService(final RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 

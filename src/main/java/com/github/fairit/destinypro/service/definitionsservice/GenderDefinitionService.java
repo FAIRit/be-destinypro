@@ -14,12 +14,13 @@ import java.util.List;
 @Service
 public class GenderDefinitionService {
 
-    private GenderDefinitionApiService genderApiService;
-    private GenderRepository genderRepository;
-    private ModelMapper modelMapper;
+    private final GenderDefinitionApiService genderApiService;
+    private final GenderRepository genderRepository;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public GenderDefinitionService(final GenderDefinitionApiService genderApiService, final GenderRepository genderRepository, ModelMapper modelMapper) {
+    public GenderDefinitionService(final GenderDefinitionApiService genderApiService, final GenderRepository genderRepository,
+                                   final ModelMapper modelMapper) {
         this.genderApiService = genderApiService;
         this.genderRepository = genderRepository;
         this.modelMapper = modelMapper;

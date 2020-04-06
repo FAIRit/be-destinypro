@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlayerService {
 
-    private PlayerApiService playerApiService;
+    private final PlayerApiService playerApiService;
 
     @Autowired
     public PlayerService(final PlayerApiService playerApiService) {

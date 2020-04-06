@@ -18,15 +18,16 @@ import java.util.List;
 @Service
 public class CharacterService {
 
-    private CharacterApiService characterApiService;
-    private ClassRepository classRepository;
-    private GenderRepository genderRepository;
-    private RaceRepository raceRepository;
-    private ModelMapper modelMapper;
+    private final CharacterApiService characterApiService;
+    private final ClassRepository classRepository;
+    private final GenderRepository genderRepository;
+    private final RaceRepository raceRepository;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public CharacterService(CharacterApiService characterApiService, ClassRepository classRepository,
-                            GenderRepository genderRepository, RaceRepository raceRepository, ModelMapper modelMapper) {
+    public CharacterService(final CharacterApiService characterApiService, final ClassRepository classRepository,
+                            final GenderRepository genderRepository, final RaceRepository raceRepository,
+                            final ModelMapper modelMapper) {
         this.characterApiService = characterApiService;
         this.classRepository = classRepository;
         this.genderRepository = genderRepository;
@@ -34,7 +35,7 @@ public class CharacterService {
         this.modelMapper = modelMapper;
     }
 
-    public Characters getListOfPlayerCharacters(PlayerApi playerApi) {
+    public Characters getListOfPlayerCharacters(final PlayerApi playerApi) {
 
         List<AllCharactersApiData> listOfPlayerCharactersFromApi = characterApiService.getListOfPlayerCharactersFromApi(playerApi);
         List<CharacterData> characterDataList = new ArrayList<>();

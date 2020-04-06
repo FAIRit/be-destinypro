@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class RestApiExceptionHandler {
 
     @ExceptionHandler({CharacterNotFoundException.class})
-    public ResponseEntity<ApiErrorDto> handleEntityNotFound(CharacterNotFoundException exception) {
+    public ResponseEntity<ApiErrorDto> handleEntityNotFound(final CharacterNotFoundException exception) {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(create(exception));
     }
 
     @ExceptionHandler({ApiNotFoundException.class})
-    public ResponseEntity<ApiErrorDto> handleEntityNotFound(ApiNotFoundException exception) {
+    public ResponseEntity<ApiErrorDto> handleEntityNotFound(final ApiNotFoundException exception) {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(create(exception));
     }
 
-    private ApiErrorDto create(Exception exception) {
+    private ApiErrorDto create(final Exception exception) {
         ApiErrorDto errorDto = new ApiErrorDto();
         errorDto.setExceptionClass(exception.getClass().getCanonicalName());
         errorDto.setMessage(exception.getMessage());

@@ -1,6 +1,6 @@
 package com.github.fairit.destinypro.service.statsservice;
 
-import com.github.fairit.destinypro.config.HttpConfig;
+import com.github.fairit.destinypro.config.ApplicationConfig;
 import com.github.fairit.destinypro.dto.character.CharacterData;
 import com.github.fairit.destinypro.dto.pvepvpstats.api.ActivityStatsApi;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +12,8 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class StatisticApiService {
 
-    private RestTemplate restTemplate;
-    private HttpConfig httpConfig;
+    private final RestTemplate restTemplate;
+    private final ApplicationConfig httpConfig;
 
     @Value("${api.bungie.address.playercharacterPVPstats}")
     private String pvpApiAddress;
@@ -22,26 +22,26 @@ public class StatisticApiService {
     private String pveApiAddress;
 
     @Autowired
-    public StatisticApiService(RestTemplate restTemplate, HttpConfig httpConfig) {
+    public StatisticApiService(final RestTemplate restTemplate, final ApplicationConfig httpConfig) {
         this.restTemplate = restTemplate;
         this.httpConfig = httpConfig;
     }
 
-    public ActivityStatsApi getPvpStatsForGivenCharacter(CharacterData character) {
+    public ActivityStatsApi getPvpStatsForGivenCharacter(final CharacterData character) {
         return restTemplate
                 .exchange(getCorrectedApiAddressWithReplacements(pvpApiAddress, character),
                         HttpMethod.GET, httpConfig.getHttpEntity(), ActivityStatsApi.class, 1)
                 .getBody();
     }
 
-    public ActivityStatsApi getPveStatsForGivenCharacter(CharacterData character) {
+    public ActivityStatsApi getPveStatsForGivenCharacter(final CharacterData character) {
         return restTemplate
                 .exchange(getCorrectedApiAddressWithReplacements(pveApiAddress, character),
                         HttpMethod.GET, httpConfig.getHttpEntity(), ActivityStatsApi.class, 1)
                 .getBody();
     }
 
-    private String getCorrectedApiAddressWithReplacements(String address, CharacterData character) {
+    private String getCorrectedApiAddressWithReplacements(final String address, final CharacterData character) {
         return address
                 .replace("{membershipType}", character.getMembershipType().toString())
                 .replace("{membershipId}", character.getMembershipId())

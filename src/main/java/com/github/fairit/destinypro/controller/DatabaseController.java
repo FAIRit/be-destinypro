@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DatabaseController {
 
-    private ClassDefinitionService classService;
-    private GenderDefinitionService genderService;
-    private RaceDefinitionService raceService;
+    private final ClassDefinitionService classService;
+    private final GenderDefinitionService genderService;
+    private final RaceDefinitionService raceService;
 
     @Autowired
     public DatabaseController(final ClassDefinitionService classService, final GenderDefinitionService genderService,

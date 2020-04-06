@@ -1,6 +1,6 @@
 package com.github.fairit.destinypro.service.playerservice;
 
-import com.github.fairit.destinypro.config.HttpConfig;
+import com.github.fairit.destinypro.config.ApplicationConfig;
 import com.github.fairit.destinypro.dto.playerapi.PlayerApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,19 +11,19 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class PlayerApiService {
 
-    private RestTemplate restTemplate;
-    private HttpConfig httpConfig;
+    private final RestTemplate restTemplate;
+    private final ApplicationConfig httpConfig;
 
     @Value("${api.bungie.address.player}")
     private String playerApiAddress;
 
     @Autowired
-    public PlayerApiService(final RestTemplate restTemplate, final HttpConfig httpConfig) {
+    public PlayerApiService(final RestTemplate restTemplate, final ApplicationConfig httpConfig) {
         this.restTemplate = restTemplate;
         this.httpConfig = httpConfig;
     }
 
-    public PlayerApi findPlayerApiByNickname(String nickname) {
+    public PlayerApi findPlayerApiByNickname(final String nickname) {
         String addressURL = playerApiAddress.replace("{nickname}", nickname);
         return restTemplate
                 .exchange(addressURL, HttpMethod.GET, httpConfig.getHttpEntity(), PlayerApi.class, 1)

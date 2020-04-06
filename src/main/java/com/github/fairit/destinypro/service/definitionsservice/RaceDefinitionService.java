@@ -14,12 +14,13 @@ import java.util.List;
 @Service
 public class RaceDefinitionService {
 
-    private RaceDefinitionApiService raceApiService;
-    private RaceRepository raceRepository;
-    private ModelMapper modelMapper;
+    private final RaceDefinitionApiService raceApiService;
+    private final RaceRepository raceRepository;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public RaceDefinitionService(final RaceDefinitionApiService raceApiService, final RaceRepository raceRepository, ModelMapper modelMapper) {
+    public RaceDefinitionService(final RaceDefinitionApiService raceApiService, final RaceRepository raceRepository,
+                                 final ModelMapper modelMapper) {
         this.raceApiService = raceApiService;
         this.raceRepository = raceRepository;
         this.modelMapper = modelMapper;

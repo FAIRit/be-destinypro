@@ -12,11 +12,11 @@ import java.util.List;
 @Service
 public class ClassDefinitionApiService {
 
-    private RestTemplate restTemplate;
-    private DefinitionsUrlApiService definitionsUrlApiService;
+    private final RestTemplate restTemplate;
+    private final DefinitionsUrlApiService definitionsUrlApiService;
 
     @Autowired
-    public ClassDefinitionApiService(final RestTemplate restTemplate, DefinitionsUrlApiService definitionsUrlApiService) {
+    public ClassDefinitionApiService(final RestTemplate restTemplate, final DefinitionsUrlApiService definitionsUrlApiService) {
         this.restTemplate = restTemplate;
         this.definitionsUrlApiService = definitionsUrlApiService;
     }

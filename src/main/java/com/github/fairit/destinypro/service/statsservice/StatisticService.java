@@ -11,16 +11,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class StatisticService {
 
-    private StatisticApiService statisticApiService;
-    private AverageStatisticService averageStatisticService;
+    private final StatisticApiService statisticApiService;
+    private final AverageStatisticService averageStatisticService;
 
     @Autowired
-    public StatisticService(StatisticApiService statisticApiService, AverageStatisticService averageStatisticService) {
+    public StatisticService(final StatisticApiService statisticApiService, final AverageStatisticService averageStatisticService) {
         this.statisticApiService = statisticApiService;
         this.averageStatisticService = averageStatisticService;
     }
 
-    public CharacterPvp getAveragedCharacterPvpActivitiesStats(CharacterData character) {
+    public CharacterPvp getAveragedCharacterPvpActivitiesStats(final CharacterData character) {
 
         ActivityStatsApi pvpCharacterStats = statisticApiService.getPvpStatsForGivenCharacter(character);
         CharacterActivityStats stats = new CharacterActivityStats();
@@ -32,7 +32,7 @@ public class StatisticService {
         return new CharacterPvp(stats);
     }
 
-    public CharacterPve getAveragedCharacterPveActivitiesStats(CharacterData character) {
+    public CharacterPve getAveragedCharacterPveActivitiesStats(final CharacterData character) {
 
         ActivityStatsApi pveCharacterStats = statisticApiService.getPveStatsForGivenCharacter(character);
         CharacterActivityStats stats = new CharacterActivityStats();

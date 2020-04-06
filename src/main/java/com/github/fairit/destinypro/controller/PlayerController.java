@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PlayerController {
 
-    private PlayerService playerService;
-    private CharacterService characterService;
-    private StatisticService statisticService;
+    private final PlayerService playerService;
+    private final CharacterService characterService;
+    private final StatisticService statisticService;
 
     @Autowired
     public PlayerController(final PlayerService playerService, final CharacterService characterService, StatisticService statisticService) {
@@ -29,25 +29,25 @@ public class PlayerController {
     }
 
     @PostMapping(value = "/findplayer/{nickname}")
-    public Characters searchPlayerByNicknameAndShowCharacters(@PathVariable String nickname) {
+    public Characters searchPlayerByNicknameAndShowCharacters(@PathVariable final String nickname) {
         PlayerApi playerByNickname = playerService.findPlayerByNickname(nickname);
         return characterService.getListOfPlayerCharacters(playerByNickname);
     }
 
     @PostMapping(value = "/findplayer/{nickname}/pvpstats/{characterId}")
-    public CharacterPvp showPvpStatsForCharacter(@PathVariable String nickname, @PathVariable String characterId) {
+    public CharacterPvp showPvpStatsForCharacter(@PathVariable final String nickname, @PathVariable final String characterId) {
         return statisticService
                 .getAveragedCharacterPvpActivitiesStats(getCharacterStatsByNicknameAndCharacterId(nickname, characterId));
     }
 
     @PostMapping(value = "/findplayer/{nickname}/pvestats/{characterId}")
-    public CharacterPve showPveStatsForCharacter(@PathVariable String nickname, @PathVariable String characterId) {
+    public CharacterPve showPveStatsForCharacter(@PathVariable final String nickname, @PathVariable final String characterId) {
 
         return statisticService
                 .getAveragedCharacterPveActivitiesStats(getCharacterStatsByNicknameAndCharacterId(nickname, characterId));
     }
 
-    private CharacterData getCharacterStatsByNicknameAndCharacterId(String nickname, String characterId) {
+    private CharacterData getCharacterStatsByNicknameAndCharacterId(final String nickname, final String characterId) {
         return searchPlayerByNicknameAndShowCharacters(nickname).getCharacterDataList()
                 .stream()
                 .filter(ch -> ch.getCharacterId().contentEquals(characterId))

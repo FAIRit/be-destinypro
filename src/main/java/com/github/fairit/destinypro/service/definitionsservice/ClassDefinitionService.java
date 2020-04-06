@@ -14,12 +14,13 @@ import java.util.List;
 @Service
 public class ClassDefinitionService {
 
-    private ClassDefinitionApiService classApiService;
-    private ClassRepository classRepository;
-    private ModelMapper modelMapper;
+    private final ClassDefinitionApiService classApiService;
+    private final ClassRepository classRepository;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public ClassDefinitionService(final ClassDefinitionApiService classApiService, final ClassRepository classRepository, ModelMapper modelMapper) {
+    public ClassDefinitionService(final ClassDefinitionApiService classApiService, final ClassRepository classRepository,
+                                  final ModelMapper modelMapper) {
         this.classApiService = classApiService;
         this.classRepository = classRepository;
         this.modelMapper = modelMapper;

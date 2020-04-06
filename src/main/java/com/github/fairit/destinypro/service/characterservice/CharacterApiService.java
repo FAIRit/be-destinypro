@@ -1,6 +1,6 @@
 package com.github.fairit.destinypro.service.characterservice;
 
-import com.github.fairit.destinypro.config.HttpConfig;
+import com.github.fairit.destinypro.config.ApplicationConfig;
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiData;
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiResponse;
 import com.github.fairit.destinypro.dto.playerapi.PlayerApi;
@@ -18,19 +18,19 @@ import java.util.Map;
 @Service
 public class CharacterApiService {
 
-    private RestTemplate restTemplate;
-    private HttpConfig httpConfig;
+    private final RestTemplate restTemplate;
+    private final ApplicationConfig httpConfig;
 
     @Value("${api.bungie.address.listofcharacters}")
     private String charactersApiAddress;
 
     @Autowired
-    public CharacterApiService(RestTemplate restTemplate, HttpConfig httpConfig) {
+    public CharacterApiService(final RestTemplate restTemplate, final ApplicationConfig httpConfig) {
         this.restTemplate = restTemplate;
         this.httpConfig = httpConfig;
     }
 
-    public List<AllCharactersApiData> getListOfPlayerCharactersFromApi(PlayerApi playerApi) {
+    public List<AllCharactersApiData> getListOfPlayerCharactersFromApi(final PlayerApi playerApi) {
         List<AllCharactersApiData> allCharactersApiDataList = new ArrayList<>();
         for (Map.Entry<Object, AllCharactersApiData> dataEntry : getCharactersApiResponseMap(playerApi).entrySet()) {
             allCharactersApiDataList.add(dataEntry.getValue());
@@ -38,7 +38,7 @@ public class CharacterApiService {
         return allCharactersApiDataList;
     }
 
-    private Map<Object, AllCharactersApiData> getCharactersApiResponseMap(PlayerApi playerApi) {
+    private Map<Object, AllCharactersApiData> getCharactersApiResponseMap(final PlayerApi playerApi) {
 
         String addressURL = getCorrectCharacterApiAddress(playerApi);
         AllCharactersApiResponse characterApi = restTemplate
