@@ -1,7 +1,7 @@
-package com.github.fairit.destinypro.service.character;
+package com.github.fairit.destinypro.serviceimpl.character;
 
 import com.github.fairit.destinypro.dto.character.CharacterData;
-import com.github.fairit.destinypro.service.player.PlayerApiService;
+import com.github.fairit.destinypro.serviceimpl.player.PlayerApiService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +21,13 @@ public class CharacterServiceTest {
     private PlayerApiService playerApi;
 
     @Autowired
-    private CharacterService characterService;
+    private CharacterServiceImpl characterService;
 
     @Test
     public void getListOfPlayerCharacters() {
 
         List<CharacterData> characterDataList = characterService
-                .getListOfPlayerCharacters(playerApi.findPlayerApiByNickname("katojido")).getCharacterDataList();
+                .getPlayerCharacters(playerApi.findPlayerApiByNickname("katojido")).getCharacterDataList();
 
         assertThat(characterDataList, notNullValue());
         assertThat(characterDataList, everyItem(instanceOf(CharacterData.class)));

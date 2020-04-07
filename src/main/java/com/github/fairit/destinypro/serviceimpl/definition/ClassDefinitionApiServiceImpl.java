@@ -1,7 +1,8 @@
-package com.github.fairit.destinypro.service.definition;
+package com.github.fairit.destinypro.serviceimpl.definition;
 
 import com.github.fairit.destinypro.entity.api.characterclass.ClassApi;
 import com.github.fairit.destinypro.entity.api.characterclass.ClassSpecificApi;
+import com.github.fairit.destinypro.service.definition.DefinitionApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -10,18 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ClassDefinitionApiService {
+public class ClassDefinitionApiServiceImpl implements DefinitionApiService {
 
     private final RestTemplate restTemplate;
     private final DefinitionsUrlApiService definitionsUrlApiService;
 
     @Autowired
-    public ClassDefinitionApiService(final RestTemplate restTemplate, final DefinitionsUrlApiService definitionsUrlApiService) {
+    public ClassDefinitionApiServiceImpl(final RestTemplate restTemplate, final DefinitionsUrlApiService definitionsUrlApiService) {
         this.restTemplate = restTemplate;
         this.definitionsUrlApiService = definitionsUrlApiService;
     }
 
-    public List<ClassSpecificApi> getListOfClassDefinition() {
+    public List<ClassSpecificApi> getListOfDefinition() {
          ClassApi classApiObject = restTemplate
                  .getForObject(definitionsUrlApiService.getClassApiAddress(), ClassApi.class);
 

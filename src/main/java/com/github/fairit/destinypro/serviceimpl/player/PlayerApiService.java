@@ -1,4 +1,4 @@
-package com.github.fairit.destinypro.service.player;
+package com.github.fairit.destinypro.serviceimpl.player;
 
 import com.github.fairit.destinypro.config.ApplicationConfig;
 import com.github.fairit.destinypro.dto.playerapi.PlayerApi;

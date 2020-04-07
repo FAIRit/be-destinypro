@@ -1,7 +1,7 @@
-package com.github.fairit.destinypro.service.character;
+package com.github.fairit.destinypro.serviceimpl.character;
 
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiData;
-import com.github.fairit.destinypro.service.player.PlayerApiService;
+import com.github.fairit.destinypro.serviceimpl.player.PlayerApiService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import static org.hamcrest.Matchers.*;
 public class CharacterApiServiceTest {
 
     @Autowired
-    private CharacterApiService characterApiService;
+    private CharacterApiServiceImpl characterApiService;
 
     @Autowired
     private PlayerApiService playerApiService;

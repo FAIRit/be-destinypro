@@ -6,9 +6,9 @@ import com.github.fairit.destinypro.dto.playerapi.PlayerApi;
 import com.github.fairit.destinypro.dto.pvepvpstats.CharacterPve;
 import com.github.fairit.destinypro.dto.pvepvpstats.CharacterPvp;
 import com.github.fairit.destinypro.exception.CharacterNotFoundException;
-import com.github.fairit.destinypro.service.character.CharacterService;
-import com.github.fairit.destinypro.service.player.PlayerService;
-import com.github.fairit.destinypro.service.stats.StatisticService;
+import com.github.fairit.destinypro.serviceimpl.character.CharacterServiceImpl;
+import com.github.fairit.destinypro.serviceimpl.player.PlayerService;
+import com.github.fairit.destinypro.serviceimpl.stats.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class PlayerController {
 
     private final PlayerService playerService;
-    private final CharacterService characterService;
+    private final CharacterServiceImpl characterService;
     private final StatisticService statisticService;
 
     @Autowired
-    public PlayerController(final PlayerService playerService, final CharacterService characterService, StatisticService statisticService) {
+    public PlayerController(final PlayerService playerService, final CharacterServiceImpl characterService, StatisticService statisticService) {
         this.playerService = playerService;
         this.characterService = characterService;
         this.statisticService = statisticService;
@@ -31,7 +31,7 @@ public class PlayerController {
     @GetMapping(value = "/findplayer/{nickname}")
     public Characters searchPlayerByNicknameAndShowCharacters(@PathVariable final String nickname) {
         PlayerApi playerByNickname = playerService.findPlayerByNickname(nickname);
-        return characterService.getListOfPlayerCharacters(playerByNickname);
+        return characterService.getPlayerCharacters(playerByNickname);
     }
 
     @GetMapping(value = "/findplayer/{nickname}/pvpstats/{characterId}")

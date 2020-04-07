@@ -1,4 +1,4 @@
-package com.github.fairit.destinypro.service.stats;
+package com.github.fairit.destinypro.serviceimpl.stats;
 
 import com.github.fairit.destinypro.config.ApplicationConfig;
 import com.github.fairit.destinypro.dto.character.CharacterData;
