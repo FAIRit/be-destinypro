@@ -37,7 +37,7 @@ If the application is already installed and running.
 
 Possible endpoints:
 
-POST
+GET
 
 localhost:8080/findplayer/{nickname}
 
