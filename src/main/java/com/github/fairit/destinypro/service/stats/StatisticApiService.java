@@ -3,9 +3,11 @@ package com.github.fairit.destinypro.service.stats;
 import com.github.fairit.destinypro.config.ApplicationConfig;
 import com.github.fairit.destinypro.dto.character.CharacterData;
 import com.github.fairit.destinypro.dto.pvepvpstats.api.ActivityStatsApi;
+import com.github.fairit.destinypro.exception.ActivityStatsNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -28,17 +30,23 @@ public class StatisticApiService {
     }
 
     public ActivityStatsApi getPvpStatsForGivenCharacter(final CharacterData character) {
-        return restTemplate
+        ResponseEntity<ActivityStatsApi> responseEntity = restTemplate
                 .exchange(getCorrectedApiAddressWithReplacements(pvpApiAddress, character),
-                        HttpMethod.GET, httpConfig.getHttpEntity(), ActivityStatsApi.class, 1)
-                .getBody();
+                        HttpMethod.GET, httpConfig.getHttpEntity(), ActivityStatsApi.class, 1);
+        if (responseEntity.getStatusCodeValue() != 200) {
+            throw new ActivityStatsNotFoundException("PvP");
+        }
+        return responseEntity.getBody();
     }
 
     public ActivityStatsApi getPveStatsForGivenCharacter(final CharacterData character) {
-        return restTemplate
+        ResponseEntity<ActivityStatsApi> responseEntity = restTemplate
                 .exchange(getCorrectedApiAddressWithReplacements(pveApiAddress, character),
-                        HttpMethod.GET, httpConfig.getHttpEntity(), ActivityStatsApi.class, 1)
-                .getBody();
+                        HttpMethod.GET, httpConfig.getHttpEntity(), ActivityStatsApi.class, 1);
+        if (responseEntity.getStatusCodeValue() != 200) {
+            throw new ActivityStatsNotFoundException("PvE");
+        }
+        return responseEntity.getBody();
     }
 
     private String getCorrectedApiAddressWithReplacements(final String address, final CharacterData character) {

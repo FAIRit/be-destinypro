@@ -1,9 +1,7 @@
 package com.github.fairit.destinypro.controller;
 
 import com.github.fairit.destinypro.dto.exception.ErrorDto;
-import com.github.fairit.destinypro.exception.ApiNotFoundException;
-import com.github.fairit.destinypro.exception.CharacterNotFoundException;
-import com.github.fairit.destinypro.exception.PlayerNotFoundException;
+import com.github.fairit.destinypro.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -28,6 +26,34 @@ public class RestApiExceptionHandler {
 
     @ExceptionHandler({ApiNotFoundException.class})
     public ResponseEntity<ErrorDto> handleEntityNotFound(final ApiNotFoundException exception) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(create(exception));
+    }
+
+    @ExceptionHandler({BadPlayerRequestException.class})
+    public ResponseEntity<ErrorDto> handleEntityNotFound(final BadPlayerRequestException exception) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(create(exception));
+    }
+
+    @ExceptionHandler({NicknameCannotBeEmptyException.class})
+    public ResponseEntity<ErrorDto> handleEntityNotFound(final NicknameCannotBeEmptyException exception) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(create(exception));
+    }
+
+    @ExceptionHandler({BadDestinyManifestRequestException.class})
+    public ResponseEntity<ErrorDto> handleEntityNotFound(final BadDestinyManifestRequestException exception) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(create(exception));
+    }
+
+    @ExceptionHandler({ActivityStatsNotFoundException.class})
+    public ResponseEntity<ErrorDto> handleEntityNotFound(final ActivityStatsNotFoundException exception) {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(create(exception));

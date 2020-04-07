@@ -5,9 +5,11 @@ import com.github.fairit.destinypro.dto.character.api.AllCharactersApiData;
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiResponse;
 import com.github.fairit.destinypro.dto.playerapi.PlayerApi;
 import com.github.fairit.destinypro.exception.ApiNotFoundException;
+import com.github.fairit.destinypro.exception.BadCharacterRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -39,17 +41,15 @@ public class CharacterApiService {
     }
 
     private Map<Object, AllCharactersApiData> getCharactersApiResponseMap(final PlayerApi playerApi) {
-
         String addressURL = getCorrectCharacterApiAddress(playerApi);
-        AllCharactersApiResponse characterApi = restTemplate
-                .exchange(addressURL, HttpMethod.GET, httpConfig.getHttpEntity(), AllCharactersApiResponse.class, 1)
-//                .getStatusCode().
-                .getBody();
-
-        if (characterApi != null) {
-            return characterApi.getResponse().getCharacter().getCharacterData();
+        ResponseEntity<AllCharactersApiResponse> responseEntity = restTemplate
+                .exchange(addressURL, HttpMethod.GET, httpConfig.getHttpEntity(), AllCharactersApiResponse.class, 1);
+        if (responseEntity.getStatusCodeValue() != 200) {
+            throw new BadCharacterRequestException();
+        } else if (responseEntity.getBody() == null) {
+            throw new ApiNotFoundException(AllCharactersApiData.class);
         }
-        throw new ApiNotFoundException(AllCharactersApiData.class);
+        return responseEntity.getBody().getResponse().getCharacter().getCharacterData();
     }
 
     private String getCorrectCharacterApiAddress(final PlayerApi playerApi) {
