@@ -4,6 +4,7 @@ import com.github.fairit.destinypro.config.ApplicationConfig;
 import com.github.fairit.destinypro.dto.character.CharacterData;
 import com.github.fairit.destinypro.dto.pvepvpstats.api.ActivityStatsApi;
 import com.github.fairit.destinypro.exception.ActivityStatsNotFoundException;
+import com.github.fairit.destinypro.service.stats.StatisticApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class StatisticApiService {
+public class StatisticApiServiceImpl implements StatisticApiService {
 
     private final RestTemplate restTemplate;
     private final ApplicationConfig httpConfig;
@@ -24,11 +25,12 @@ public class StatisticApiService {
     private String pveApiAddress;
 
     @Autowired
-    public StatisticApiService(final RestTemplate restTemplate, final ApplicationConfig httpConfig) {
+    public StatisticApiServiceImpl(final RestTemplate restTemplate, final ApplicationConfig httpConfig) {
         this.restTemplate = restTemplate;
         this.httpConfig = httpConfig;
     }
 
+    @Override
     public ActivityStatsApi getPvpStatsForGivenCharacter(final CharacterData character) {
         ResponseEntity<ActivityStatsApi> responseEntity = restTemplate
                 .exchange(getCorrectedApiAddressWithReplacements(pvpApiAddress, character),
@@ -39,6 +41,7 @@ public class StatisticApiService {
         return responseEntity.getBody();
     }
 
+    @Override
     public ActivityStatsApi getPveStatsForGivenCharacter(final CharacterData character) {
         ResponseEntity<ActivityStatsApi> responseEntity = restTemplate
                 .exchange(getCorrectedApiAddressWithReplacements(pveApiAddress, character),

@@ -4,6 +4,7 @@ import com.github.fairit.destinypro.config.ApplicationConfig;
 import com.github.fairit.destinypro.dto.playerapi.PlayerApi;
 import com.github.fairit.destinypro.exception.BadPlayerRequestException;
 import com.github.fairit.destinypro.exception.PlayerNotFoundException;
+import com.github.fairit.destinypro.service.player.PlayerApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
@@ -14,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Objects;
 
 @Service
-public class PlayerApiService {
+public class PlayerApiServiceImpl implements PlayerApiService {
 
     private final RestTemplate restTemplate;
     private final ApplicationConfig httpConfig;
@@ -23,11 +24,12 @@ public class PlayerApiService {
     private String playerApiAddress;
 
     @Autowired
-    public PlayerApiService(final RestTemplate restTemplate, final ApplicationConfig httpConfig) {
+    public PlayerApiServiceImpl(final RestTemplate restTemplate, final ApplicationConfig httpConfig) {
         this.restTemplate = restTemplate;
         this.httpConfig = httpConfig;
     }
 
+    @Override
     public PlayerApi findPlayerApiByNickname(final String nickname) {
         String addressURL = playerApiAddress.replace("{nickname}", nickname);
         ResponseEntity<PlayerApi> responseEntity = restTemplate

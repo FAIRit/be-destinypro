@@ -1,19 +1,21 @@
 package com.github.fairit.destinypro.serviceimpl.player;
 
 import com.github.fairit.destinypro.dto.playerapi.PlayerApi;
+import com.github.fairit.destinypro.service.player.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PlayerService {
+public class PlayerServiceImpl implements PlayerService {
 
-    private final PlayerApiService playerApiService;
+    private final PlayerApiServiceImpl playerApiService;
 
     @Autowired
-    public PlayerService(final PlayerApiService playerApiService) {
+    public PlayerServiceImpl(final PlayerApiServiceImpl playerApiService) {
         this.playerApiService = playerApiService;
     }
 
+    @Override
     public PlayerApi findPlayerByNickname(String nickname) {
         return playerApiService.findPlayerApiByNickname(nickname);
     }

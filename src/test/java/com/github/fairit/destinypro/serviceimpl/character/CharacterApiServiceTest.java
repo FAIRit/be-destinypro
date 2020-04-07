@@ -1,7 +1,7 @@
 package com.github.fairit.destinypro.serviceimpl.character;
 
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiData;
-import com.github.fairit.destinypro.serviceimpl.player.PlayerApiService;
+import com.github.fairit.destinypro.serviceimpl.player.PlayerApiServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class CharacterApiServiceTest {
     private CharacterApiServiceImpl characterApiService;
 
     @Autowired
-    private PlayerApiService playerApiService;
+    private PlayerApiServiceImpl playerApiService;
 
     @Test
     public void checkListOfPlayerCharactersFromApiWhenPlayerHasOneCharacter() {

@@ -23,7 +23,7 @@ public class PlayerServiceTest {
             = "{\"response\":[{\"membershipType\":3,\"membershipId\":\"4611686018485400803\",\"displayName\":\"katojido\"}]}";
 
     @Autowired
-    private PlayerService playerService;
+    private PlayerServiceImpl playerService;
 
     private PlayerApi playerApi;
 

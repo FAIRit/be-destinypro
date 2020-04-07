@@ -16,7 +16,7 @@ import static org.hamcrest.Matchers.*;
 public class PlayerApiServiceTest {
 
     @Autowired
-    private PlayerApiService playerApiService;
+    private PlayerApiServiceImpl playerApiService;
 
     @Test
     public void findPlayerApiByNicknameByNicknameShouldReturnCorrectedPlayerJson() {
