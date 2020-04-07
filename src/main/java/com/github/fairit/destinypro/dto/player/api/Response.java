@@ -26,4 +26,16 @@ public class Response {
     public String getDisplayName() {
         return displayName;
     }
+
+    public void setMembershipType(Byte membershipType) {
+        this.membershipType = membershipType;
+    }
+
+    public void setMembershipId(String membershipId) {
+        this.membershipId = membershipId;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
 }

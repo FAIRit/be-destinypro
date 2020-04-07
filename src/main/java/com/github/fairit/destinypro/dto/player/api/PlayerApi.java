@@ -14,4 +14,8 @@ public class PlayerApi {
     public List<Response> getResponse() {
         return response;
     }
+
+    public void setResponse(List<Response> response) {
+        this.response = response;
+    }
 }
