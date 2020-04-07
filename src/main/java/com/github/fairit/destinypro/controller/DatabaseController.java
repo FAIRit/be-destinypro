@@ -1,8 +1,8 @@
 package com.github.fairit.destinypro.controller;
 
-import com.github.fairit.destinypro.service.definitionsservice.ClassDefinitionService;
-import com.github.fairit.destinypro.service.definitionsservice.GenderDefinitionService;
-import com.github.fairit.destinypro.service.definitionsservice.RaceDefinitionService;
+import com.github.fairit.destinypro.service.definition.ClassDefinitionService;
+import com.github.fairit.destinypro.service.definition.GenderDefinitionService;
+import com.github.fairit.destinypro.service.definition.RaceDefinitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
