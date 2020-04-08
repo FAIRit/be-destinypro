@@ -1,10 +1,10 @@
-package com.github.fairit.destinypro.serviceimpl.character;
+package com.github.fairit.destinypro.service.impl.character;
 
 import com.github.fairit.destinypro.dto.character.CharacterData;
 import com.github.fairit.destinypro.dto.character.CharacterGeneralStats;
 import com.github.fairit.destinypro.dto.character.Characters;
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiData;
-import com.github.fairit.destinypro.dto.playerapi.PlayerApi;
+import com.github.fairit.destinypro.dto.player.api.PlayerApi;
 import com.github.fairit.destinypro.repository.ClassRepository;
 import com.github.fairit.destinypro.repository.GenderRepository;
 import com.github.fairit.destinypro.repository.RaceRepository;

@@ -2,13 +2,13 @@ package com.github.fairit.destinypro.controller;
 
 import com.github.fairit.destinypro.dto.character.CharacterData;
 import com.github.fairit.destinypro.dto.character.Characters;
-import com.github.fairit.destinypro.dto.playerapi.PlayerApi;
+import com.github.fairit.destinypro.dto.player.api.PlayerApi;
 import com.github.fairit.destinypro.dto.pvepvpstats.CharacterPve;
 import com.github.fairit.destinypro.dto.pvepvpstats.CharacterPvp;
 import com.github.fairit.destinypro.exception.CharacterNotFoundException;
-import com.github.fairit.destinypro.serviceimpl.character.CharacterServiceImpl;
-import com.github.fairit.destinypro.serviceimpl.player.PlayerServiceImpl;
-import com.github.fairit.destinypro.serviceimpl.stats.StatisticServiceImpl;
+import com.github.fairit.destinypro.service.impl.character.CharacterServiceImpl;
+import com.github.fairit.destinypro.service.impl.player.PlayerServiceImpl;
+import com.github.fairit.destinypro.service.impl.stats.StatisticServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

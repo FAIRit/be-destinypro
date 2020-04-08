@@ -1,4 +1,4 @@
-package com.github.fairit.destinypro.dto.playerapi;
+package com.github.fairit.destinypro.dto.player.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;

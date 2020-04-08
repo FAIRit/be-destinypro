@@ -1,6 +1,6 @@
-package com.github.fairit.destinypro.serviceimpl.player;
+package com.github.fairit.destinypro.service.impl.player;
 
-import com.github.fairit.destinypro.dto.playerapi.PlayerApi;
+import com.github.fairit.destinypro.dto.player.api.PlayerApi;
 import com.google.gson.Gson;
 import org.json.JSONException;
 import org.junit.Before;

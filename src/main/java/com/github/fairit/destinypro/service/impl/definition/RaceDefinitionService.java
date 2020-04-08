@@ -1,4 +1,4 @@
-package com.github.fairit.destinypro.serviceimpl.definition;
+package com.github.fairit.destinypro.service.impl.definition;
 
 import com.github.fairit.destinypro.entity.RaceEntity;
 import com.github.fairit.destinypro.entity.api.characterrace.RaceSpecificApi;

@@ -1,9 +1,9 @@
-package com.github.fairit.destinypro.serviceimpl.character;
+package com.github.fairit.destinypro.service.impl.character;
 
 import com.github.fairit.destinypro.config.ApplicationConfig;
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiData;
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiResponse;
-import com.github.fairit.destinypro.dto.playerapi.PlayerApi;
+import com.github.fairit.destinypro.dto.player.api.PlayerApi;
 import com.github.fairit.destinypro.exception.ApiNotFoundException;
 import com.github.fairit.destinypro.exception.BadCharacterRequestException;
 import com.github.fairit.destinypro.service.character.CharacterApiService;

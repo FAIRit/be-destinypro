@@ -1,7 +1,7 @@
-package com.github.fairit.destinypro.serviceimpl.character;
+package com.github.fairit.destinypro.service.impl.character;
 
 import com.github.fairit.destinypro.dto.character.CharacterData;
-import com.github.fairit.destinypro.serviceimpl.player.PlayerApiServiceImpl;
+import com.github.fairit.destinypro.service.impl.player.PlayerApiServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

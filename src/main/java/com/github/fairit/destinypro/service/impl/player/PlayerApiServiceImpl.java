@@ -1,7 +1,7 @@
-package com.github.fairit.destinypro.serviceimpl.player;
+package com.github.fairit.destinypro.service.impl.player;
 
 import com.github.fairit.destinypro.config.ApplicationConfig;
-import com.github.fairit.destinypro.dto.playerapi.PlayerApi;
+import com.github.fairit.destinypro.dto.player.api.PlayerApi;
 import com.github.fairit.destinypro.exception.BadPlayerRequestException;
 import com.github.fairit.destinypro.exception.PlayerNotFoundException;
 import com.github.fairit.destinypro.service.player.PlayerApiService;

@@ -1,4 +1,4 @@
-package com.github.fairit.destinypro.serviceimpl.definition;
+package com.github.fairit.destinypro.service.impl.definition;
 
 import com.github.fairit.destinypro.config.ApplicationConfig;
 import com.github.fairit.destinypro.dto.destinymanifest.DestinyManifestUrl;
