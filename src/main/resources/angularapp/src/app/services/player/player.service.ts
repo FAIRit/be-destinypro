@@ -9,8 +9,8 @@ export class PlayerService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public findPlayer(): Observable<RootObject>{
-    return this.httpClient.get<RootObject>('//localhost:8080/findplayer/katojido')
+  public findPlayer(nickname: string): Observable<RootObject>{
+    return this.httpClient.get<RootObject>('findplayer/' + nickname)
   }
 }
 

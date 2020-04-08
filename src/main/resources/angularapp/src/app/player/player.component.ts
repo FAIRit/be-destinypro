@@ -14,7 +14,11 @@ export class PlayerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.playerService.findPlayer().subscribe(value => {
+
+  }
+
+  findPlayerByNickname(nickname: string) {
+    this.playerService.findPlayer(nickname).subscribe(value => {
       this.rootObject = value;
     });
   }
