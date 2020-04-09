@@ -2,6 +2,7 @@ package com.github.fairit.destinypro.service.impl.player;
 
 
 import com.github.fairit.destinypro.dto.player.api.PlayerApi;
+import com.github.fairit.destinypro.service.player.PlayerApiService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import static org.hamcrest.Matchers.*;
 public class PlayerApiServiceTest {
 
     @Autowired
-    private PlayerApiServiceImpl playerApiService;
+    private PlayerApiService playerApiService;
 
     @Test
     public void findPlayerApiByNicknameByNicknameShouldReturnCorrectedPlayerJson() {

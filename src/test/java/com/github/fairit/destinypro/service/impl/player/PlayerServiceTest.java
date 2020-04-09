@@ -1,6 +1,7 @@
 package com.github.fairit.destinypro.service.impl.player;
 
 import com.github.fairit.destinypro.dto.player.api.PlayerApi;
+import com.github.fairit.destinypro.service.player.PlayerService;
 import com.google.gson.Gson;
 import org.json.JSONException;
 import org.junit.Before;
@@ -23,7 +24,7 @@ public class PlayerServiceTest {
             = "{\"response\":[{\"membershipType\":3,\"membershipId\":\"4611686018485400803\",\"displayName\":\"katojido\"}]}";
 
     @Autowired
-    private PlayerServiceImpl playerService;
+    private PlayerService playerService;
 
     private PlayerApi playerApi;
 
