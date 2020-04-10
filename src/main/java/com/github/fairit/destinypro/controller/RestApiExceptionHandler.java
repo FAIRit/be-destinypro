@@ -1,7 +1,13 @@
 package com.github.fairit.destinypro.controller;
 
 import com.github.fairit.destinypro.dto.exception.ErrorDto;
-import com.github.fairit.destinypro.exception.*;
+import com.github.fairit.destinypro.exception.ActivityStatsNotFoundException;
+import com.github.fairit.destinypro.exception.ApiNotFoundException;
+import com.github.fairit.destinypro.exception.BadDestinyManifestRequestException;
+import com.github.fairit.destinypro.exception.BadPlayerRequestException;
+import com.github.fairit.destinypro.exception.CharacterNotFoundException;
+import com.github.fairit.destinypro.exception.NicknameCannotBeEmptyException;
+import com.github.fairit.destinypro.exception.PlayerNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

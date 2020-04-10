@@ -20,7 +20,7 @@ public class PlayerApiServiceTest {
     private PlayerApiService playerApiService;
 
     @Test
-    public void findPlayerApiByNicknameByNicknameShouldReturnCorrectedPlayerJson() {
+    public void findPlayerApiByNicknameShouldReturnCorrectedPlayerJson() {
 
         PlayerApi playerByNickname = playerApiService.findPlayerApiByNickname("katojido");
 
