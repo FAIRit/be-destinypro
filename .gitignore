@@ -36,7 +36,7 @@ build/
 /bazel-out
 
 # dependencies
-/node_modules
+resources/angular-app/node_modules
 
 # profiling files
 chrome-profiler-events*.json
