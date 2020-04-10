@@ -18,8 +18,8 @@
         <p class="lead list-group-item-warning text-center">{{item.light}}</p>
         <p>{{item.raceName}} {{item.genderName}}</p>
         <div class="btn-group-vertical ">
-          <a class="btn btn-info btn-lg" (click)="toggleDisplayStats()" role="button">Main Stats</a>
-          <div class="text-center medium" *ngIf = "isShowStats">
+          <a class="btn btn-info btn-lg" (click)="toggleDisplayFirstStats()" role="button">Main Stats</a>
+          <div class="text-center medium" *ngIf = "isShowFirstStats">
             <br>
             <p>Light: {{item.characterGeneralStats.light}}</p>
             <p>Mobility: {{item.characterGeneralStats.mobility}}</p>
@@ -32,7 +32,7 @@
           </div>
           <a class="btn btn-danger btn-lg" (click)="findFirstPlayerCharacterPvPStats(nickname.value,item.characterId)"
              role="button">PvP</a>
-          <div class="text-center medium" *ngIf = "isShowPvP">
+          <div class="text-center medium" *ngIf = "isShowFirstPvP && firstCharacterPvPStats">
             <br>
             <p>Average kills: {{firstCharacterPvPStats.averageKills}}</p>
             <p>Average assists: {{firstCharacterPvPStats.averageAssists}}</p>
@@ -42,9 +42,9 @@
           </div>
           <a class="btn btn-primary btn-lg" (click)="findFirstPlayerCharacterPvEStats(nickname.value,item.characterId)"
              role="button">PvE</a>
-          <div class="text-center medium" *ngIf = "isShowPvE">
+          <div class="text-center medium" *ngIf = "isShowFirstPvE && firstCharacterPvEStats">
             <br>
-            <p>Average kills: {{firstCharacterPvEStats.averageKills}}</p>
+            <p>Average kills: {{firstCharacterPvEStats.averageKills}}</p>Second
             <p>Average assists: {{firstCharacterPvEStats.averageAssists}}</p>
             <p>Average deaths: {{firstCharacterPvEStats.averageDeaths}}</p>
             <p>Average K/D ratio: {{firstCharacterPvEStats.averageKillsDeathsRatio}}</p>
@@ -59,8 +59,8 @@
         <p class="lead list-group-item-warning text-center">{{item.light}}</p>
         <p>{{item.raceName}} {{item.genderName}}</p>
         <div class="btn-group-vertical">
-          <a class="btn btn-info btn-lg" (click)="toggleDisplayStats()" role="button">Main Stats</a>
-          <div class="text-center medium" *ngIf = "isShowStats">
+          <a class="btn btn-info btn-lg" (click)="toggleDisplaySecondStats()" role="button">Main Stats</a>
+          <div class="text-center medium" *ngIf = "isShowSecondStats">
             <br>
             <p>Light: {{item.characterGeneralStats.light}}</p>
             <p>Mobility: {{item.characterGeneralStats.mobility}}</p>
@@ -73,7 +73,7 @@
           </div>
           <a class="btn btn-danger btn-lg" (click)="findSecondPlayerCharacterPvPStats(nickname.value,item.characterId)"
              role="button">PvP</a>
-          <div class="text-center medium" *ngIf = "isShowPvP">
+          <div class="text-center medium" *ngIf = "isShowSecondPvP && secondCharacterPvPStats">
             <br>
             <p>Average kills: {{secondCharacterPvPStats.averageKills}}</p>
             <p>Average assists: {{secondCharacterPvPStats.averageAssists}}</p>
@@ -83,7 +83,7 @@
           </div>
           <a class="btn btn-primary btn-lg" (click)="findSecondPlayerCharacterPvEStats(nickname.value,item.characterId)"
              role="button">PvE</a>
-          <div class="text-center medium" *ngIf = "isShowPvE">
+          <div class="text-center medium" *ngIf = "isShowSecondPvE && secondCharacterPvEStats">
             <br>
             <p>Average kills: {{secondCharacterPvEStats.averageKills}}</p>
             <p>Average assists: {{secondCharacterPvEStats.averageAssists}}</p>
@@ -100,8 +100,8 @@
         <p class="lead list-group-item-warning text-center">{{item.light}}</p>
         <p>{{item.raceName}} {{item.genderName}}</p>
         <div class="btn-group-vertical">
-          <a class="btn btn-info btn-lg" (click)="toggleDisplayStats()" role="button">Main Stats</a>
-          <div class="text-center medium" *ngIf = "isShowStats">
+          <a class="btn btn-info btn-lg" (click)="toggleDisplayThirdStats()" role="button">Main Stats</a>
+          <div class="text-center medium" *ngIf = "isShowThirdStats">
             <br>
             <p>Light: {{item.characterGeneralStats.light}}</p>
             <p>Mobility: {{item.characterGeneralStats.mobility}}</p>
@@ -114,7 +114,7 @@
           </div>
           <a class="btn btn-danger btn-lg" (click)="findThirdPlayerCharacterPvPStats(nickname.value,item.characterId)"
              role="button">PvP</a>
-          <div class="text-center medium" *ngIf = "isShowPvP">
+          <div class="text-center medium" *ngIf = "isShowThirdPvP && thirdCharacterPvPStats">
             <br>
             <p>Average kills: {{thirdCharacterPvPStats.averageKills}}</p>
             <p>Average assists: {{thirdCharacterPvPStats.averageAssists}}</p>
@@ -124,7 +124,7 @@
           </div>
           <a class="btn btn-primary btn-lg" (click)="findThirdPlayerCharacterPvEStats(nickname.value,item.characterId)"
              role="button">PvE</a>
-          <div class="text-center medium" *ngIf = "isShowPvE">
+          <div class="text-center medium" *ngIf = "isShowThirdPvE && thirdCharacterPvEStats">
             <br>
             <p>Average kills: {{thirdCharacterPvEStats.averageKills}}</p>
             <p>Average assists: {{thirdCharacterPvEStats.averageAssists}}</p>

@@ -16,9 +16,15 @@ export class PlayerComponent implements OnInit {
   firstCharacterPvEStats: CharacterActivityStats;
   secondCharacterPvEStats: CharacterActivityStats;
   thirdCharacterPvEStats: CharacterActivityStats;
-  isShowStats = false;
-  isShowPvP = false;
-  isShowPvE = false;
+  isShowFirstStats = false;
+  isShowSecondStats = false;
+  isShowThirdStats = false;
+  isShowFirstPvP = false;
+  isShowSecondPvP = false;
+  isShowThirdPvP = false;
+  isShowFirstPvE = false;
+  isShowSecondPvE = false;
+  isShowThirdPvE = false;
 
   constructor(private playerService: PlayerService, private statsService: StatsService) {
   }
@@ -34,56 +40,80 @@ export class PlayerComponent implements OnInit {
   }
 
   findFirstPlayerCharacterPvPStats(nickname: string, characterId: string) {
-    this.toggleDisplayPvP()
     this.statsService.findcharacterPvpStats(nickname,characterId).subscribe(value => {
       this.firstCharacterPvPStats = value.characterActivityStats;
     });
+    this.toggleDisplayFirstPvP()
   }
 
   findFirstPlayerCharacterPvEStats(nickname: string, characterId: string) {
-    this.toggleDisplayPvE()
     this.statsService.findcharacterPveStats(nickname,characterId).subscribe(value => {
       this.firstCharacterPvEStats = value.characterActivityStats;
     });
+    this.toggleDisplayFirstPvE()
   }
 
   findSecondPlayerCharacterPvPStats(nickname: string, characterId: string) {
-    this.toggleDisplayPvP()
     this.statsService.findcharacterPvpStats(nickname,characterId).subscribe(value => {
       this.secondCharacterPvPStats = value.characterActivityStats;
     });
+    this.toggleDisplaySecondPvP()
   }
 
   findSecondPlayerCharacterPvEStats(nickname: string, characterId: string) {
-    this.toggleDisplayPvE()
     this.statsService.findcharacterPveStats(nickname,characterId).subscribe(value => {
       this.secondCharacterPvEStats = value.characterActivityStats;
     });
+    this.toggleDisplaySecondPvE()
   }
 
   findThirdPlayerCharacterPvPStats(nickname: string, characterId: string) {
-    this.toggleDisplayPvP()
     this.statsService.findcharacterPvpStats(nickname,characterId).subscribe(value => {
       this.thirdCharacterPvPStats = value.characterActivityStats;
     });
+    this.toggleDisplayThirdPvP()
   }
 
   findThirdPlayerCharacterPvEStats(nickname: string, characterId: string) {
-    this.toggleDisplayPvE()
     this.statsService.findcharacterPveStats(nickname,characterId).subscribe(value => {
       this.thirdCharacterPvEStats = value.characterActivityStats;
     });
+    this.toggleDisplayThirdPvE()
   }
 
-  toggleDisplayStats() {
-    this.isShowStats = !this.isShowStats;
+  toggleDisplayFirstStats() {
+    this.isShowFirstStats = !this.isShowFirstStats;
   }
 
-  toggleDisplayPvP() {
-    this.isShowPvP = !this.isShowPvP;
+  toggleDisplaySecondStats() {
+    this.isShowSecondStats = !this.isShowSecondStats;
   }
 
-  toggleDisplayPvE() {
-    this.isShowPvE = !this.isShowPvE;
+  toggleDisplayThirdStats() {
+    this.isShowThirdStats = !this.isShowThirdStats;
+  }
+
+  toggleDisplayFirstPvP() {
+    this.isShowFirstPvP = !this.isShowFirstPvP;
+  }
+
+  toggleDisplaySecondPvP() {
+    this.isShowSecondPvP = !this.isShowSecondPvP;
+  }
+
+  toggleDisplayThirdPvP() {
+    this.isShowThirdPvP = !this.isShowThirdPvP;
+  }
+
+  toggleDisplayFirstPvE() {
+    this.isShowFirstPvE = !this.isShowFirstPvE;
+  }
+
+  toggleDisplaySecondPvE() {
+    this.isShowSecondPvE = !this.isShowSecondPvE;
+  }
+
+  toggleDisplayThirdPvE() {
+    this.isShowThirdPvE = !this.isShowThirdPvE;
   }
 }
