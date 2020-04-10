@@ -1,6 +1,5 @@
 package com.github.fairit.destinypro.service.impl.character;
 
-import com.github.fairit.destinypro.config.ApplicationConfig;
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiData;
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiResponse;
 import com.github.fairit.destinypro.dto.player.api.PlayerApi;
@@ -9,8 +8,8 @@ import com.github.fairit.destinypro.exception.BadCharacterRequestException;
 import com.github.fairit.destinypro.service.character.CharacterApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,20 +21,21 @@ import java.util.Map;
 public class CharacterApiServiceImpl implements CharacterApiService {
 
     private final RestTemplate restTemplate;
-    private final ApplicationConfig httpConfig;
+    private final HttpEntity<?> httpEntity;
 
+    // Visible for testing
     @Value("${api.bungie.address.listofcharacters}")
-    private String charactersApiAddress;
+    protected String charactersApiAddress;
 
     @Autowired
-    public CharacterApiServiceImpl(final RestTemplate restTemplate, final ApplicationConfig httpConfig) {
+    public CharacterApiServiceImpl(final RestTemplate restTemplate, final HttpEntity<?> httpEntity) {
         this.restTemplate = restTemplate;
-        this.httpConfig = httpConfig;
+        this.httpEntity = httpEntity;
     }
 
     @Override
     public List<AllCharactersApiData> getListOfPlayerCharactersFromApi(final PlayerApi playerApi) {
-        List<AllCharactersApiData> allCharactersApiDataList = new ArrayList<>();
+        var allCharactersApiDataList = new ArrayList<AllCharactersApiData>();
         for (Map.Entry<Object, AllCharactersApiData> dataEntry : getCharactersApiResponseMap(playerApi).entrySet()) {
             allCharactersApiDataList.add(dataEntry.getValue());
         }
@@ -43,9 +43,9 @@ public class CharacterApiServiceImpl implements CharacterApiService {
     }
 
     private Map<Object, AllCharactersApiData> getCharactersApiResponseMap(final PlayerApi playerApi) {
-        String addressURL = getCorrectCharacterApiAddress(playerApi);
-        ResponseEntity<AllCharactersApiResponse> responseEntity = restTemplate
-                .exchange(addressURL, HttpMethod.GET, httpConfig.getHttpEntity(), AllCharactersApiResponse.class, 1);
+        var addressURL = getCorrectCharacterApiAddress(playerApi);
+        var responseEntity = restTemplate
+                .exchange(addressURL, HttpMethod.GET, httpEntity, AllCharactersApiResponse.class, 1);
         if (responseEntity.getStatusCodeValue() != 200) {
             throw new BadCharacterRequestException();
         } else if (responseEntity.getBody() == null) {
@@ -55,8 +55,8 @@ public class CharacterApiServiceImpl implements CharacterApiService {
     }
 
     private String getCorrectCharacterApiAddress(final PlayerApi playerApi) {
-        String membershipId = playerApi.getResponse().get(0).getMembershipId();
-        Byte membershipType = playerApi.getResponse().get(0).getMembershipType();
+        var membershipId = playerApi.getResponse().get(0).getMembershipId();
+        var membershipType = playerApi.getResponse().get(0).getMembershipType();
 
         return charactersApiAddress
                 .replace("{membershipType}", membershipType.toString())
