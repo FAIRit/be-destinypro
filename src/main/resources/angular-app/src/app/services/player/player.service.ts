@@ -7,13 +7,17 @@ import {Observable} from "rxjs";
 })
 export class PlayerService {
 
+  playerNickname: string;
+
   constructor(private httpClient: HttpClient) {
   }
 
   public findPlayer(nickname: string): Observable<RootObject> {
-    return this.httpClient.get<RootObject>('findplayer/' + nickname)
+    this.playerNickname = nickname;
+    return this.httpClient.get<RootObject>('findplayer/' + nickname);
   }
 }
+
 export interface CharacterGeneralStats {
   light: number;
   mobility: number;
@@ -23,6 +27,7 @@ export interface CharacterGeneralStats {
   intellect: number;
   strength: number;
 }
+
 export interface CharacterDataList {
   membershipId: string;
   membershipType: number;
@@ -33,6 +38,7 @@ export interface CharacterDataList {
   light: number;
   characterGeneralStats: CharacterGeneralStats;
 }
+
 export interface RootObject {
   characterDataList: CharacterDataList[];
 }

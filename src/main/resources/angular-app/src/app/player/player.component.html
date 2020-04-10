@@ -1,5 +1,141 @@
-<input type="text" #nickname>
-<button (click)="findPlayerByNickname(nickname.value)">Find Player</button>
+<div class="input-group mb-3 w-50">
+  <input type="text" #nickname class="form-control" placeholder="Player nickname" aria-label="Player nickname"
+         aria-describedby="button-addon2">
+  <div class="input-group-append">
+    <button (click)="findPlayerCharactersByNickname(nickname.value)" class="btn btn-outline-secondary" type="click"
+            id="button-addon2">Find Player
+    </button>
+  </div>
+</div>
 
 <br><br><br>
-{{rootObject | json}}
+
+<div>
+  <ng-container *ngFor="let item of characters;let i = index">
+    <label *ngIf="i==0">
+      <div class="jumbotron text-center">
+        <h1 class="display-8">{{item.className}}</h1>
+        <p class="lead list-group-item-warning text-center">{{item.light}}</p>
+        <p>{{item.raceName}} {{item.genderName}}</p>
+        <div class="btn-group-vertical ">
+          <a class="btn btn-info btn-lg" (click)="toggleDisplayStats()" role="button">Main Stats</a>
+          <div class="text-center medium" *ngIf = "isShowStats">
+            <br>
+            <p>Light: {{item.characterGeneralStats.light}}</p>
+            <p>Mobility: {{item.characterGeneralStats.mobility}}</p>
+            <p>Resilience: {{item.characterGeneralStats.resilience}}</p>
+            <p>Recovery: {{item.characterGeneralStats.recovery}}</p>
+            <p>Intellect: {{item.characterGeneralStats.intellect}}</p>
+            <p>Discipline: {{item.characterGeneralStats.discipline}}</p>
+            <p>Strength: {{item.characterGeneralStats.strength}}</p>
+            <br>
+          </div>
+          <a class="btn btn-danger btn-lg" (click)="findFirstPlayerCharacterPvPStats(nickname.value,item.characterId)"
+             role="button">PvP</a>
+          <div class="text-center medium" *ngIf = "isShowPvP">
+            <br>
+            <p>Average kills: {{firstCharacterPvPStats.averageKills}}</p>
+            <p>Average assists: {{firstCharacterPvPStats.averageAssists}}</p>
+            <p>Average deaths: {{firstCharacterPvPStats.averageDeaths}}</p>
+            <p>Average K/D ratio: {{firstCharacterPvPStats.averageKillsDeathsRatio}}</p>
+            <br>
+          </div>
+          <a class="btn btn-primary btn-lg" (click)="findFirstPlayerCharacterPvEStats(nickname.value,item.characterId)"
+             role="button">PvE</a>
+          <div class="text-center medium" *ngIf = "isShowPvE">
+            <br>
+            <p>Average kills: {{firstCharacterPvEStats.averageKills}}</p>
+            <p>Average assists: {{firstCharacterPvEStats.averageAssists}}</p>
+            <p>Average deaths: {{firstCharacterPvEStats.averageDeaths}}</p>
+            <p>Average K/D ratio: {{firstCharacterPvEStats.averageKillsDeathsRatio}}</p>
+            <br>
+          </div>
+        </div>
+      </div>
+    </label>
+    <label *ngIf="i==1">
+      <div class="jumbotron text-center">
+        <h1 class="display-8">{{item.className}}</h1>
+        <p class="lead list-group-item-warning text-center">{{item.light}}</p>
+        <p>{{item.raceName}} {{item.genderName}}</p>
+        <div class="btn-group-vertical">
+          <a class="btn btn-info btn-lg" (click)="toggleDisplayStats()" role="button">Main Stats</a>
+          <div class="text-center medium" *ngIf = "isShowStats">
+            <br>
+            <p>Light: {{item.characterGeneralStats.light}}</p>
+            <p>Mobility: {{item.characterGeneralStats.mobility}}</p>
+            <p>Resilience: {{item.characterGeneralStats.resilience}}</p>
+            <p>Recovery: {{item.characterGeneralStats.recovery}}</p>
+            <p>Intellect: {{item.characterGeneralStats.intellect}}</p>
+            <p>Discipline: {{item.characterGeneralStats.discipline}}</p>
+            <p>Strength: {{item.characterGeneralStats.strength}}</p>
+            <br>
+          </div>
+          <a class="btn btn-danger btn-lg" (click)="findSecondPlayerCharacterPvPStats(nickname.value,item.characterId)"
+             role="button">PvP</a>
+          <div class="text-center medium" *ngIf = "isShowPvP">
+            <br>
+            <p>Average kills: {{secondCharacterPvPStats.averageKills}}</p>
+            <p>Average assists: {{secondCharacterPvPStats.averageAssists}}</p>
+            <p>Average deaths: {{secondCharacterPvPStats.averageDeaths}}</p>
+            <p>Average K/D ratio: {{secondCharacterPvPStats.averageKillsDeathsRatio}}</p>
+            <br>
+          </div>
+          <a class="btn btn-primary btn-lg" (click)="findSecondPlayerCharacterPvEStats(nickname.value,item.characterId)"
+             role="button">PvE</a>
+          <div class="text-center medium" *ngIf = "isShowPvE">
+            <br>
+            <p>Average kills: {{secondCharacterPvEStats.averageKills}}</p>
+            <p>Average assists: {{secondCharacterPvEStats.averageAssists}}</p>
+            <p>Average deaths: {{secondCharacterPvEStats.averageDeaths}}</p>
+            <p>Average K/D ratio: {{secondCharacterPvEStats.averageKillsDeathsRatio}}</p>
+            <br>
+          </div>
+        </div>
+      </div>
+    </label>
+    <label *ngIf="i==2">
+      <div class="jumbotron text-center">
+        <h1 class="display-8">{{item.className}}</h1>
+        <p class="lead list-group-item-warning text-center">{{item.light}}</p>
+        <p>{{item.raceName}} {{item.genderName}}</p>
+        <div class="btn-group-vertical">
+          <a class="btn btn-info btn-lg" (click)="toggleDisplayStats()" role="button">Main Stats</a>
+          <div class="text-center medium" *ngIf = "isShowStats">
+            <br>
+            <p>Light: {{item.characterGeneralStats.light}}</p>
+            <p>Mobility: {{item.characterGeneralStats.mobility}}</p>
+            <p>Resilience: {{item.characterGeneralStats.resilience}}</p>
+            <p>Recovery: {{item.characterGeneralStats.recovery}}</p>
+            <p>Intellect: {{item.characterGeneralStats.intellect}}</p>
+            <p>Discipline: {{item.characterGeneralStats.discipline}}</p>
+            <p>Strength: {{item.characterGeneralStats.strength}}</p>
+            <br>
+          </div>
+          <a class="btn btn-danger btn-lg" (click)="findThirdPlayerCharacterPvPStats(nickname.value,item.characterId)"
+             role="button">PvP</a>
+          <div class="text-center medium" *ngIf = "isShowPvP">
+            <br>
+            <p>Average kills: {{thirdCharacterPvPStats.averageKills}}</p>
+            <p>Average assists: {{thirdCharacterPvPStats.averageAssists}}</p>
+            <p>Average deaths: {{thirdCharacterPvPStats.averageDeaths}}</p>
+            <p>Average K/D ratio: {{thirdCharacterPvPStats.averageKillsDeathsRatio}}</p>
+            <br>
+          </div>
+          <a class="btn btn-primary btn-lg" (click)="findThirdPlayerCharacterPvEStats(nickname.value,item.characterId)"
+             role="button">PvE</a>
+          <div class="text-center medium" *ngIf = "isShowPvE">
+            <br>
+            <p>Average kills: {{thirdCharacterPvEStats.averageKills}}</p>
+            <p>Average assists: {{thirdCharacterPvEStats.averageAssists}}</p>
+            <p>Average deaths: {{thirdCharacterPvEStats.averageDeaths}}</p>
+            <p>Average K/D ratio: {{thirdCharacterPvEStats.averageKillsDeathsRatio}}</p>
+            <br>
+          </div>
+        </div>
+      </div>
+    </label>
+  </ng-container>
+  <div class="btn-group" role="group" aria-label="..."></div>
+  <div class="btn-group btn-group-sm" role="group" aria-label="..."></div>
+</div>
