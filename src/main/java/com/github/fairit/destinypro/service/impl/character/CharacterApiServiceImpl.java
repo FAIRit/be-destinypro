@@ -1,6 +1,5 @@
 package com.github.fairit.destinypro.service.impl.character;
 
-import com.github.fairit.destinypro.config.ApplicationConfig;
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiData;
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiResponse;
 import com.github.fairit.destinypro.dto.player.api.PlayerApi;
@@ -9,6 +8,7 @@ import com.github.fairit.destinypro.exception.BadCharacterRequestException;
 import com.github.fairit.destinypro.service.character.CharacterApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -22,15 +22,15 @@ import java.util.Map;
 public class CharacterApiServiceImpl implements CharacterApiService {
 
     private final RestTemplate restTemplate;
-    private final ApplicationConfig httpConfig;
+    private final HttpEntity<?> httpEntity;
 
     @Value("${api.bungie.address.listofcharacters}")
     private String charactersApiAddress;
 
     @Autowired
-    public CharacterApiServiceImpl(final RestTemplate restTemplate, final ApplicationConfig httpConfig) {
+    public CharacterApiServiceImpl(final RestTemplate restTemplate, final HttpEntity<?> httpEntity) {
         this.restTemplate = restTemplate;
-        this.httpConfig = httpConfig;
+        this.httpEntity = httpEntity;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class CharacterApiServiceImpl implements CharacterApiService {
     private Map<Object, AllCharactersApiData> getCharactersApiResponseMap(final PlayerApi playerApi) {
         String addressURL = getCorrectCharacterApiAddress(playerApi);
         ResponseEntity<AllCharactersApiResponse> responseEntity = restTemplate
-                .exchange(addressURL, HttpMethod.GET, httpConfig.getHttpEntity(), AllCharactersApiResponse.class, 1);
+                .exchange(addressURL, HttpMethod.GET, httpEntity, AllCharactersApiResponse.class, 1);
         if (responseEntity.getStatusCodeValue() != 200) {
             throw new BadCharacterRequestException();
         } else if (responseEntity.getBody() == null) {

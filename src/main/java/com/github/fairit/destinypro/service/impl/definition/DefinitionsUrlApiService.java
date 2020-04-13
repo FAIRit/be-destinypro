@@ -1,11 +1,11 @@
 package com.github.fairit.destinypro.service.impl.definition;
 
-import com.github.fairit.destinypro.config.ApplicationConfig;
 import com.github.fairit.destinypro.dto.destinymanifest.DestinyManifestUrl;
 import com.github.fairit.destinypro.dto.destinymanifest.EnglishJsonURL;
 import com.github.fairit.destinypro.exception.BadDestinyManifestRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -19,15 +19,15 @@ public class DefinitionsUrlApiService {
     private static final String BUNGIE_ADDRESS = "https://www.bungie.net/";
 
     private final RestTemplate restTemplate;
-    private final ApplicationConfig httpConfig;
+    private final HttpEntity<?> httpEntity;
 
     @Value("${api.bungie.address.destinymanifest}")
     private String destinyManifestApiAddress;
 
     @Autowired
-    public DefinitionsUrlApiService(final RestTemplate restTemplate, final ApplicationConfig httpConfig) {
+    public DefinitionsUrlApiService(final RestTemplate restTemplate, final HttpEntity<?> httpEntity) {
         this.restTemplate = restTemplate;
-        this.httpConfig = httpConfig;
+        this.httpEntity = httpEntity;
     }
 
     public String getClassApiAddress() {
@@ -44,7 +44,7 @@ public class DefinitionsUrlApiService {
 
     private EnglishJsonURL getJsonURL() {
         ResponseEntity<DestinyManifestUrl> responseEntity = restTemplate
-                .exchange(destinyManifestApiAddress, HttpMethod.GET, httpConfig.getHttpEntity(), DestinyManifestUrl.class, 1);
+                .exchange(destinyManifestApiAddress, HttpMethod.GET, httpEntity, DestinyManifestUrl.class, 1);
         if (responseEntity.getStatusCodeValue() != 200
                 || Objects.requireNonNull(responseEntity.getBody()).getResponse() == null) {
             throw new BadDestinyManifestRequestException();
