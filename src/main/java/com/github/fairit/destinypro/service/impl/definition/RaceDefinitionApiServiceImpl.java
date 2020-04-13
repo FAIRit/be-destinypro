@@ -23,10 +23,10 @@ public class RaceDefinitionApiServiceImpl implements DefinitionApiService {
     }
 
     public List<RaceSpecificApi> getListOfDefinition() {
-        RaceApi raceApiObject = restTemplate
+        var raceApiObject = restTemplate
                 .getForObject(definitionsUrlApiService.getRaceApiAddress(), RaceApi.class);
 
-        List<RaceSpecificApi> listOfRaceDefinition = new ArrayList<>();
+        var listOfRaceDefinition = new ArrayList<RaceSpecificApi>();
         if (raceApiObject != null) {
             listOfRaceDefinition.add(raceApiObject.getAwoken());
             listOfRaceDefinition.add(raceApiObject.getExo());

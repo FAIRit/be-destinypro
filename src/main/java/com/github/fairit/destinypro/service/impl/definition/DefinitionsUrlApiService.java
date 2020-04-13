@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -43,7 +42,7 @@ public class DefinitionsUrlApiService {
     }
 
     private EnglishJsonURL getJsonURL() {
-        ResponseEntity<DestinyManifestUrl> responseEntity = restTemplate
+        var responseEntity = restTemplate
                 .exchange(destinyManifestApiAddress, HttpMethod.GET, httpEntity, DestinyManifestUrl.class, 1);
         if (responseEntity.getStatusCodeValue() != 200
                 || Objects.requireNonNull(responseEntity.getBody()).getResponse() == null) {

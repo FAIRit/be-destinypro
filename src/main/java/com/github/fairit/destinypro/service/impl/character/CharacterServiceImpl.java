@@ -3,7 +3,6 @@ package com.github.fairit.destinypro.service.impl.character;
 import com.github.fairit.destinypro.dto.character.CharacterData;
 import com.github.fairit.destinypro.dto.character.CharacterGeneralStats;
 import com.github.fairit.destinypro.dto.character.Characters;
-import com.github.fairit.destinypro.dto.character.api.AllCharactersApiData;
 import com.github.fairit.destinypro.dto.player.api.PlayerApi;
 import com.github.fairit.destinypro.repository.ClassRepository;
 import com.github.fairit.destinypro.repository.GenderRepository;
@@ -14,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class CharacterServiceImpl implements CharacterService {
@@ -39,12 +37,12 @@ public class CharacterServiceImpl implements CharacterService {
     @Override
     public Characters getPlayerCharacters(final PlayerApi playerApi) {
 
-        List<AllCharactersApiData> listOfPlayerCharactersFromApi = characterApiService.getListOfPlayerCharactersFromApi(playerApi);
-        List<CharacterData> characterDataList = new ArrayList<>();
+        var listOfPlayerCharactersFromApi = characterApiService.getListOfPlayerCharactersFromApi(playerApi);
+        var characterDataList = new ArrayList<CharacterData>();
 
-        for (AllCharactersApiData characterApiData : listOfPlayerCharactersFromApi) {
-            CharacterData characterData = modelMapper.map(characterApiData, CharacterData.class);
-            CharacterGeneralStats characterGeneralStats = modelMapper.map(characterApiData.getCharacterStats(), CharacterGeneralStats.class);
+        for (var characterApiData : listOfPlayerCharactersFromApi) {
+            var characterData = modelMapper.map(characterApiData, CharacterData.class);
+            var characterGeneralStats = modelMapper.map(characterApiData.getCharacterStats(), CharacterGeneralStats.class);
             characterData.setCharacterGeneralStats(characterGeneralStats);
             characterData.setClassName(classRepository.findClassEntityByHash(characterApiData.getClassHash()).getProperties().getName());
             characterData.setGenderName(genderRepository.findByHash(characterApiData.getGenderHash()).getProperties().getName());

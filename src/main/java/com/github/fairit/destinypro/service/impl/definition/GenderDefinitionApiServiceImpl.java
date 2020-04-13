@@ -24,10 +24,10 @@ public class GenderDefinitionApiServiceImpl implements DefinitionApiService {
 
     @Override
     public List<GenderSpecificApi> getListOfDefinition() {
-         GenderApi genderApiObject = restTemplate
-                 .getForObject(definitionsUrlApiService.getGenderApiAddress(), GenderApi.class);
+        var genderApiObject = restTemplate
+                .getForObject(definitionsUrlApiService.getGenderApiAddress(), GenderApi.class);
 
-        List<GenderSpecificApi> listOfGenderDefinition = new ArrayList<>();
+        var listOfGenderDefinition = new ArrayList<GenderSpecificApi>();
         if (genderApiObject != null) {
             listOfGenderDefinition.add(genderApiObject.getFemale());
             listOfGenderDefinition.add(genderApiObject.getMale());

@@ -10,7 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.notNullValue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -22,7 +24,7 @@ public class PlayerApiServiceTest {
     @Test
     public void findPlayerApiByNicknameShouldReturnCorrectedPlayerJson() {
 
-        PlayerApi playerByNickname = playerApiService.findPlayerApiByNickname("katojido");
+        var playerByNickname = playerApiService.findPlayerApiByNickname("katojido");
 
         assertThat(playerByNickname, notNullValue());
         assertThat(playerByNickname.getResponse().get(0).getDisplayName(), containsString("katojido"));

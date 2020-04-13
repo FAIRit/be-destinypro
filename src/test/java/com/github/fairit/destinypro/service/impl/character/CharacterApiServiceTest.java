@@ -9,10 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
-
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.both;
+import static org.hamcrest.Matchers.everyItem;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.lessThanOrEqualTo;
+import static org.hamcrest.Matchers.notNullValue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -26,7 +30,7 @@ public class CharacterApiServiceTest {
 
     @Test
     public void checkListOfPlayerCharactersFromApiWhenPlayerHasOneCharacter() {
-        List<AllCharactersApiData> allCharactersApiData = characterApiService
+        var allCharactersApiData = characterApiService
                 .getListOfPlayerCharactersFromApi(playerApiService.findPlayerApiByNickname("katojido"));
 
         assertThat(allCharactersApiData, notNullValue());
@@ -36,7 +40,7 @@ public class CharacterApiServiceTest {
 
     @Test
     public void checkListOfPlayerCharactersFromApiWhenPlayerHasThreeCharacters() {
-        List<AllCharactersApiData> allCharactersApiData = characterApiService
+        var allCharactersApiData = characterApiService
                 .getListOfPlayerCharactersFromApi(playerApiService.findPlayerApiByNickname("akamre"));
 
         assertThat(allCharactersApiData, notNullValue());

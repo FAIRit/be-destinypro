@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -32,7 +31,7 @@ public class StatisticApiServiceImpl implements StatisticApiService {
 
     @Override
     public ActivityStatsApi getPvpStatsForGivenCharacter(final CharacterData character) {
-        ResponseEntity<ActivityStatsApi> responseEntity = restTemplate
+        var responseEntity = restTemplate
                 .exchange(getCorrectedApiAddressWithReplacements(pvpApiAddress, character),
                         HttpMethod.GET, httpEntity, ActivityStatsApi.class, 1);
         if (responseEntity.getStatusCodeValue() != 200) {
@@ -43,7 +42,7 @@ public class StatisticApiServiceImpl implements StatisticApiService {
 
     @Override
     public ActivityStatsApi getPveStatsForGivenCharacter(final CharacterData character) {
-        ResponseEntity<ActivityStatsApi> responseEntity = restTemplate
+        var responseEntity = restTemplate
                 .exchange(getCorrectedApiAddressWithReplacements(pveApiAddress, character),
                         HttpMethod.GET, httpEntity, ActivityStatsApi.class, 1);
         if (responseEntity.getStatusCodeValue() != 200) {

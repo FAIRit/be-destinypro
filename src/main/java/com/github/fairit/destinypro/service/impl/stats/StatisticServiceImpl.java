@@ -4,7 +4,6 @@ import com.github.fairit.destinypro.dto.character.CharacterData;
 import com.github.fairit.destinypro.dto.pvepvpstats.CharacterActivityStats;
 import com.github.fairit.destinypro.dto.pvepvpstats.CharacterPve;
 import com.github.fairit.destinypro.dto.pvepvpstats.CharacterPvp;
-import com.github.fairit.destinypro.dto.pvepvpstats.api.ActivityStatsApi;
 import com.github.fairit.destinypro.service.stats.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +23,8 @@ public class StatisticServiceImpl implements StatisticService {
     @Override
     public CharacterPvp getAveragedCharacterPvpActivitiesStats(final CharacterData character) {
 
-        ActivityStatsApi pvpCharacterStats = statisticApiService.getPvpStatsForGivenCharacter(character);
-        CharacterActivityStats stats = new CharacterActivityStats();
+        var pvpCharacterStats = statisticApiService.getPvpStatsForGivenCharacter(character);
+        var stats = new CharacterActivityStats();
 
         stats.setAverageAssists(averageStatisticService.getAverageAssists(pvpCharacterStats));
         stats.setAverageKills(averageStatisticService.getAverageKills(pvpCharacterStats));
@@ -37,8 +36,8 @@ public class StatisticServiceImpl implements StatisticService {
     @Override
     public CharacterPve getAveragedCharacterPveActivitiesStats(final CharacterData character) {
 
-        ActivityStatsApi pveCharacterStats = statisticApiService.getPveStatsForGivenCharacter(character);
-        CharacterActivityStats stats = new CharacterActivityStats();
+        var pveCharacterStats = statisticApiService.getPveStatsForGivenCharacter(character);
+        var stats = new CharacterActivityStats();
 
         stats.setAverageAssists(averageStatisticService.getAverageAssists(pveCharacterStats));
         stats.setAverageKills(averageStatisticService.getAverageKills(pveCharacterStats));

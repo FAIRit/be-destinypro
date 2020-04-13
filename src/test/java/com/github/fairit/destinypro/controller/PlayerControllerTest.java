@@ -50,7 +50,7 @@ public class PlayerControllerTest {
 
     @Test
     public void shouldReturnCharactersClass() {
-        Characters characters = playerController.searchPlayerByNicknameAndShowCharacters(NICKNAME);
+        var characters = playerController.searchPlayerByNicknameAndShowCharacters(NICKNAME);
 
         assertThat(characters, is(notNullValue()));
         assertThat(characters, is(instanceOf(Characters.class)));
@@ -66,7 +66,7 @@ public class PlayerControllerTest {
 
     @Test
     public void shouldReturnCharacterActivityStatsForSearchCharacterPvPStats() {
-        CharacterPvp pvpStatsForCharacter = playerController
+        var pvpStatsForCharacter = playerController
                 .showPvpStatsForCharacter(NICKNAME, CHARACTER_ID);
 
         assertThat(pvpStatsForCharacter, is(notNullValue()));
@@ -83,7 +83,7 @@ public class PlayerControllerTest {
 
     @Test
     public void shouldReturnCharacterActivityStatsForSearchCharacterPvEStats() {
-        CharacterPve pveStatsForCharacter = playerController
+        var pveStatsForCharacter = playerController
                 .showPveStatsForCharacter(NICKNAME, CHARACTER_ID);
 
         assertThat(pveStatsForCharacter, is(notNullValue()));

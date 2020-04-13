@@ -1,18 +1,13 @@
 package com.github.fairit.destinypro.service.impl.character;
 
 import com.github.fairit.destinypro.dto.character.CharacterData;
-import com.github.fairit.destinypro.dto.player.api.PlayerApi;
 import com.github.fairit.destinypro.service.character.CharacterService;
 import com.github.fairit.destinypro.service.player.PlayerApiService;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.both;
@@ -33,19 +28,10 @@ public class CharacterServiceTest {
     @Autowired
     private CharacterService characterService;
 
-    @Mock
-    private PlayerApi playerApi;
-
-    @Before
-    public void setUp() {
-
-
-    }
-
     @Test
     public void getListOfPlayerCharactersFromApi() {
 
-        List<CharacterData> characterDataList = characterService
+        var characterDataList = characterService
                 .getPlayerCharacters(playerApiService.findPlayerApiByNickname("katojido")).getCharacterDataList();
 
         assertThat(characterDataList, notNullValue());

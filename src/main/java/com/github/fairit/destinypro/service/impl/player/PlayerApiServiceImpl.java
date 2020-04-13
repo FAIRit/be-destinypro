@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -31,14 +30,14 @@ public class PlayerApiServiceImpl implements PlayerApiService {
 
     @Override
     public PlayerApi findPlayerApiByNickname(final String nickname) {
-        String addressURL = playerApiAddress.replace("{nickname}", nickname);
-        ResponseEntity<PlayerApi> responseEntity = restTemplate
+        var addressURL = playerApiAddress.replace("{nickname}", nickname);
+        var responseEntity = restTemplate
                 .exchange(addressURL, HttpMethod.GET, httpEntity, PlayerApi.class, 1);
 
         if (responseEntity.getStatusCodeValue() != 200
-        || Objects.requireNonNull(responseEntity.getBody()).getResponse().isEmpty()) {
+                || Objects.requireNonNull(responseEntity.getBody()).getResponse().isEmpty()) {
             throw new BadPlayerRequestException(nickname);
-        } else if (responseEntity.getBody() == null){
+        } else if (responseEntity.getBody() == null) {
             throw new PlayerNotFoundException(nickname);
         }
         return responseEntity.getBody();
