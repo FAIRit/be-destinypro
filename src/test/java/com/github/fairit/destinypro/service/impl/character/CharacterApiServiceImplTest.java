@@ -1,7 +1,9 @@
 package com.github.fairit.destinypro.service.impl.character;
 
+import com.github.fairit.destinypro.dto.character.api.AllCharactersApi;
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiData;
 import com.github.fairit.destinypro.dto.character.api.AllCharactersApiResponse;
+import com.github.fairit.destinypro.dto.character.api.AllCharactersResponse;
 import com.github.fairit.destinypro.dto.player.api.PlayerApi;
 import com.github.fairit.destinypro.dto.player.api.Response;
 import org.junit.Before;
@@ -17,6 +19,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.both;
@@ -29,6 +33,7 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class CharacterApiServiceImplTest {
@@ -62,6 +67,17 @@ public class CharacterApiServiceImplTest {
         responseList.add(response);
         when(response.getMembershipId()).thenReturn("123");
         when(restTemplate.exchange(anyString(), any(HttpMethod.class), eq(httpEntity), eq(AllCharactersApiResponse.class), eq(1))).thenReturn(allCharacterResponse);
+        when(allCharacterResponse.getStatusCodeValue()).thenReturn(200);
+        var body = mock(AllCharactersApiResponse.class);
+        when(allCharacterResponse.getBody()).thenReturn(body);
+        var charactersResponse = mock(AllCharactersResponse.class);
+        when(body.getResponse()).thenReturn(charactersResponse);
+        var character = mock(AllCharactersApi.class);
+        when(charactersResponse.getCharacter()).thenReturn(character);
+        var data = mock(Map.class);
+        when(character.getCharacterData()).thenReturn(data);
+        var entry = mock(AllCharactersApiData.class);
+        when(data.values()).thenReturn(Arrays.asList(entry));
     }
 
     @Test
