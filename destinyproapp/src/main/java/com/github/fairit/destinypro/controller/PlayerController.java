@@ -10,6 +10,7 @@ import com.github.fairit.destinypro.service.impl.character.CharacterServiceImpl;
 import com.github.fairit.destinypro.service.impl.player.PlayerServiceImpl;
 import com.github.fairit.destinypro.service.impl.stats.StatisticServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,18 +29,21 @@ public class PlayerController {
         this.statisticService = statisticService;
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping(value = "/findplayer/{nickname}")
     public Characters searchPlayerByNicknameAndShowCharacters(@PathVariable final String nickname) {
         PlayerApi playerByNickname = playerService.findPlayerByNickname(nickname);
         return characterService.getPlayerCharacters(playerByNickname);
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping(value = "/findplayer/{nickname}/pvpstats/{characterId}")
     public CharacterPvp showPvpStatsForCharacter(@PathVariable final String nickname, @PathVariable final String characterId) {
         return statisticService
                 .getAveragedCharacterPvpActivitiesStats(getCharacterStatsByNicknameAndCharacterId(nickname, characterId));
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping(value = "/findplayer/{nickname}/pvestats/{characterId}")
     public CharacterPve showPveStatsForCharacter(@PathVariable final String nickname, @PathVariable final String characterId) {
 

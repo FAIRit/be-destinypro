@@ -23,17 +23,6 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/findplayer")
-                        .allowedOrigins("http://localhost:8080");
-            }
-        };
-    }
-
-    @Bean
     public RestTemplate getRestTemplate() {
         return new RestTemplate();
     }
