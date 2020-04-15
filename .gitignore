@@ -1,24 +1,8 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**
-!**/src/test/**
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
-
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -26,25 +10,18 @@ target/
 /nbdist/
 /.nb-gradle/
 build/
-
 ### VS Code ###
 /dist
 /tmp
 /out-tsc
-
 # Only exists if Bazel was run
 /bazel-out
 
 # dependencies
-resources/angular-app/node_modules
+/angularapp/node_modules/
 
 # profiling files
 chrome-profiler-events*.json
-speed-measure-plugin*.json
-
-# IDEs and editors
-.c9/
-*.launch
 .settings/
 *.sublime-workspace
 
