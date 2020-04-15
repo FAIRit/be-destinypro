@@ -29,21 +29,21 @@ public class PlayerController {
         this.statisticService = statisticService;
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/findplayer/{nickname}")
     public Characters searchPlayerByNicknameAndShowCharacters(@PathVariable final String nickname) {
         PlayerApi playerByNickname = playerService.findPlayerByNickname(nickname);
         return characterService.getPlayerCharacters(playerByNickname);
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/findplayer/{nickname}/pvpstats/{characterId}")
     public CharacterPvp showPvpStatsForCharacter(@PathVariable final String nickname, @PathVariable final String characterId) {
         return statisticService
                 .getAveragedCharacterPvpActivitiesStats(getCharacterStatsByNicknameAndCharacterId(nickname, characterId));
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/findplayer/{nickname}/pvestats/{characterId}")
     public CharacterPve showPveStatsForCharacter(@PathVariable final String nickname, @PathVariable final String characterId) {
 
