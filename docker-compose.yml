@@ -11,7 +11,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - appDatabaseData:/var/lib/postgresql
+      - destinyAppDatabaseData:/var/lib/postgresql
     networks:
       - backendNetwork
 
@@ -27,21 +27,17 @@ services:
       - frontendNetwork
 
   angular:
-    image: nginx:alpine
     container_name: angular
     ports:
       - 4200:80
     depends_on:
       - springapi
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./angularapp/dist/angularapp/:/usr/share/nginx/html
     networks:
       - frontendNetwork
 
 
 volumes:
-  dockerAngularSpringDatabaseData:
+  destinyAppDatabaseData:
 
 networks:
   backendNetwork:
