@@ -27,7 +27,9 @@ services:
       - frontendNetwork
 
   angular:
+    build: ./angularapp
     container_name: angular
+    restart: always
     ports:
       - 4200:80
     depends_on:
