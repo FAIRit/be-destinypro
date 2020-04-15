@@ -16,15 +16,12 @@ services:
       - backendNetwork
 
   springapi:
-    image: openjdk:12-alpine
+    build: ./destinyproapp
     container_name: springapi
     ports:
       - 8080:8080
     depends_on:
       - database
-    volumes:
-      - ./destinyproapp/target/destinyproapp-0.0.1-SNAPSHOT.jar:/application.jar
-    command: ["java", "-jar", "application.jar"]
     networks:
       - backendNetwork
       - frontendNetwork
