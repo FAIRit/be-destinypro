@@ -10,5 +10,5 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({PlayerControllerTest.class, CharacterApiServiceTest.class, PlayerApiServiceTest.class,
         PlayerServiceTest.class})
-public class BeDoyouDestinyproApplicationTests {
+public class ApplicationTests {
 }

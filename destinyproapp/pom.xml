@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.github.fairit</groupId>
-    <artifactId>be_doyou_destinypro</artifactId>
+    <artifactId>destinyproapp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>destinypro</name>
     <description>Destiny 2 player search application. It presents basic statistics of a given player.</description>
@@ -76,5 +76,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
