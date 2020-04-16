@@ -5,6 +5,8 @@ Searching application for Destiny 2 player. It presents basic statistics of a gi
 
 Bungie.net allows users to create fireteams. Sometimes we can't determine the skill of the player who joins our team. That's why I decided to create an application that allows you to quickly check the player's general skills and statistics.
 
+[](https://github.com/FAIRit/be-destinypro/tree/master/docs/app.gif)
+
 #### Features
 
 [**Must have**](https://github.com/FAIRit/be-doYou_destinyPRO/issues?q=is%3Aissue+is%3Aopen+label%3A%22must+have%22)
@@ -13,19 +15,15 @@ Bungie.net allows users to create fireteams. Sometimes we can't determine the sk
 
 #### Tech/framework used
 
-SpringBoot, Hibernate, Docker
+SpringBoot, Hibernate, Docker, Angular
 
 #### Installation
 
-Needed: Java, Maven, Docker
+Needed: Docker
 
-To run App locally, firstly you need build project with Maven:
+To run App locally, you need build project with docker-compose :
 
-`$ mvn install`
-
-Secondly with installed Java run project:
-
-`$ java -jar target/be_doyou_destinypro-0.0.1-SNAPSHOT.jar`
+`$ docker-compose up -d`
 
 #### API Documentation
 
@@ -35,18 +33,4 @@ Endpoint documentation is available at https://bungie-net.github.io/multi/
 
 If the application is already installed and running.
 
-Possible endpoints:
-
-POST
-
-localhost:8080/findplayer/{nickname}
-
-localhost:8080/findplayer/{nickname}/pvpstats/{characterID}
-
-localhost:8080/findplayer/{nickname}/pvestats/{characterID}
-
-EXAMPLE VALUES
-
-nickname: katojido
-
-characterID: 2305843009410040403
+EXAMPLE PLAYER NICKNAME: akamre, katojido, malenkam, westersylwester
