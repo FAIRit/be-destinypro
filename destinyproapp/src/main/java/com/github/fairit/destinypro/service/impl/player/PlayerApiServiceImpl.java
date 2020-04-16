@@ -20,7 +20,7 @@ public class PlayerApiServiceImpl implements PlayerApiService {
     private final HttpEntity<?> httpEntity;
 
     @Value("${api.bungie.address.player}")
-    private String playerApiAddress;
+    protected String playerApiAddress;
 
     @Autowired
     public PlayerApiServiceImpl(final RestTemplate restTemplate, final HttpEntity<?> httpEntity) {

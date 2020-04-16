@@ -13,9 +13,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class CharacterApiServiceImpl implements CharacterApiService {
@@ -24,7 +25,7 @@ public class CharacterApiServiceImpl implements CharacterApiService {
     private final HttpEntity<?> httpEntity;
 
     @Value("${api.bungie.address.listofcharacters}")
-    private String charactersApiAddress;
+    protected String charactersApiAddress;
 
     @Autowired
     public CharacterApiServiceImpl(final RestTemplate restTemplate, final HttpEntity<?> httpEntity) {
@@ -34,11 +35,7 @@ public class CharacterApiServiceImpl implements CharacterApiService {
 
     @Override
     public List<AllCharactersApiData> getListOfPlayerCharactersFromApi(final PlayerApi playerApi) {
-        var allCharactersApiDataList = new ArrayList<AllCharactersApiData>();
-        for (Map.Entry<Object, AllCharactersApiData> dataEntry : getCharactersApiResponseMap(playerApi).entrySet()) {
-            allCharactersApiDataList.add(dataEntry.getValue());
-        }
-        return allCharactersApiDataList;
+        return getCharactersApiResponseMap(playerApi).values().stream().collect(toList());
     }
 
     private Map<Object, AllCharactersApiData> getCharactersApiResponseMap(final PlayerApi playerApi) {
