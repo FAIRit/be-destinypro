@@ -37,7 +37,7 @@ public class PlayerServiceTest {
     }
 
     @Test
-    public void findPlayerMethodShouldReturnConcretePlayerApi() {
+    public void findPlayerMethodShouldReturnInstanceOfPlayerApi() {
         assertThat(playerApi, notNullValue());
         assertThat(playerApi, instanceOf(PlayerApi.class));
     }
