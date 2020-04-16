@@ -9,9 +9,9 @@ Bungie.net allows users to create fireteams. Sometimes we can't determine the sk
 
 #### Features
 
-[**Must have**](https://github.com/FAIRit/be-doYou_destinyPRO/issues?q=is%3Aissue+is%3Aopen+label%3A%22must+have%22)
+[**Must have**](https://github.com/FAIRit/be-destinypro/issues?q=is%3Aissue+is%3Aclosed+label%3A%22must+have%22)
 
-[**Nice to have**](https://github.com/FAIRit/be-doYou_destinyPRO/issues?q=is%3Aissue+is%3Aopen+label%3A%22nice+to+have%22)
+[**Nice to have**](https://github.com/FAIRit/be-destinypro/issues?q=is%3Aopen+is%3Aissue+label%3A%22nice+to+have%22)
 
 #### Tech/framework used
 
