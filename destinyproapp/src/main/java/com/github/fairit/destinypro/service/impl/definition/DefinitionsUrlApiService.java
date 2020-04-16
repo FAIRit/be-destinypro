@@ -1,5 +1,6 @@
 package com.github.fairit.destinypro.service.impl.definition;
 
+
 import com.github.fairit.destinypro.dto.destinymanifest.DestinyManifestUrl;
 import com.github.fairit.destinypro.dto.destinymanifest.EnglishJsonURL;
 import com.github.fairit.destinypro.exception.BadDestinyManifestRequestException;
@@ -27,6 +28,7 @@ public class DefinitionsUrlApiService {
     public DefinitionsUrlApiService(final RestTemplate restTemplate, final HttpEntity<?> httpEntity) {
         this.restTemplate = restTemplate;
         this.httpEntity = httpEntity;
+
     }
 
     public String getClassApiAddress() {
@@ -44,6 +46,7 @@ public class DefinitionsUrlApiService {
     private EnglishJsonURL getJsonURL() {
         var responseEntity = restTemplate
                 .exchange(destinyManifestApiAddress, HttpMethod.GET, httpEntity, DestinyManifestUrl.class, 1);
+
         if (responseEntity.getStatusCodeValue() != 200
                 || Objects.requireNonNull(responseEntity.getBody()).getResponse() == null) {
             throw new BadDestinyManifestRequestException();

@@ -12,7 +12,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
 import java.util.List;
 import java.util.Map;
 
@@ -42,6 +41,7 @@ public class CharacterApiServiceImpl implements CharacterApiService {
         var addressURL = getCorrectCharacterApiAddress(playerApi);
         var responseEntity = restTemplate
                 .exchange(addressURL, HttpMethod.GET, httpEntity, AllCharactersApiResponse.class, 1);
+
         if (responseEntity.getStatusCodeValue() != 200) {
             throw new BadCharacterRequestException();
         } else if (responseEntity.getBody() == null) {

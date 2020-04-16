@@ -1,11 +1,46 @@
 version: '3'
 
 services:
-  db:
-    image: "postgres"
-    ports:
-      - "5432:5432"
+  database:
+    image: postgres
+    container_name: database
     environment:
       POSTGRES_DB: destinydatabase
       POSTGRES_USER: destinypro
       POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+    volumes:
+      - destinyAppDatabaseData:/var/lib/postgresql
+    networks:
+      - backendNetwork
+
+  springapi:
+    build: ./destinyproapp
+    container_name: springapi
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
+    networks:
+      - backendNetwork
+      - frontendNetwork
+
+  angular:
+    build: ./angularapp
+    container_name: angular
+    restart: always
+    ports:
+      - 4200:80
+    depends_on:
+      - springapi
+    networks:
+      - frontendNetwork
+
+
+volumes:
+  destinyAppDatabaseData:
+
+networks:
+  backendNetwork:
+  frontendNetwork:

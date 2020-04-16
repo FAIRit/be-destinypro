@@ -38,5 +38,4 @@ public class CharacterServiceTest {
         assertThat(characterDataList, everyItem(instanceOf(CharacterData.class)));
         assertThat(characterDataList, hasSize(both(greaterThan(0)).and(lessThanOrEqualTo(3))));
     }
-
 }

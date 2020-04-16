@@ -41,7 +41,6 @@ public class PlayerControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
-
         mockMvc
                 .perform(get("/findplayer/katojid"))
                 .andDo(print())

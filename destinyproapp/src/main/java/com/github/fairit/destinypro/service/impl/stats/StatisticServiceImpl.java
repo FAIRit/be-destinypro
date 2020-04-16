@@ -25,7 +25,6 @@ public class StatisticServiceImpl implements StatisticService {
 
         var pvpCharacterStats = statisticApiService.getPvpStatsForGivenCharacter(character);
         var stats = new CharacterActivityStats();
-
         stats.setAverageAssists(averageStatisticService.getAverageAssists(pvpCharacterStats));
         stats.setAverageKills(averageStatisticService.getAverageKills(pvpCharacterStats));
         stats.setAverageDeaths(averageStatisticService.getAverageDeaths(pvpCharacterStats));
