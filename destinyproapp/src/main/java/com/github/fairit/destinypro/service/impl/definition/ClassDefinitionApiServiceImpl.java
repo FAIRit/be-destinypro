@@ -23,10 +23,10 @@ public class ClassDefinitionApiServiceImpl implements DefinitionApiService {
     }
 
     public List<ClassSpecificApi> getListOfDefinition() {
-         ClassApi classApiObject = restTemplate
-                 .getForObject(definitionsUrlApiService.getClassApiAddress(), ClassApi.class);
+        var classApiObject = restTemplate
+                .getForObject(definitionsUrlApiService.getClassApiAddress(), ClassApi.class);
 
-        List<ClassSpecificApi> listOfClassDefinition = new ArrayList<>();
+        var listOfClassDefinition = new ArrayList<ClassSpecificApi>();
         if (classApiObject != null) {
             listOfClassDefinition.add(classApiObject.getHunter());
             listOfClassDefinition.add(classApiObject.getTitan());

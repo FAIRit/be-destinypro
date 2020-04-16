@@ -9,26 +9,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.List;
-
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.both;
+import static org.hamcrest.Matchers.everyItem;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.lessThanOrEqualTo;
+import static org.hamcrest.Matchers.notNullValue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class CharacterServiceTest {
 
     @Autowired
-    private PlayerApiService playerApi;
+    private PlayerApiService playerApiService;
 
     @Autowired
     private CharacterService characterService;
 
     @Test
-    public void getListOfPlayerCharacters() {
+    public void getListOfPlayerCharactersFromApi() {
 
-        List<CharacterData> characterDataList = characterService
-                .getPlayerCharacters(playerApi.findPlayerApiByNickname("katojido")).getCharacterDataList();
+        var characterDataList = characterService
+                .getPlayerCharacters(playerApiService.findPlayerApiByNickname("katojido")).getCharacterDataList();
 
         assertThat(characterDataList, notNullValue());
         assertThat(characterDataList, everyItem(instanceOf(CharacterData.class)));

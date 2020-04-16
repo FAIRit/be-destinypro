@@ -1,7 +1,6 @@
 package com.github.fairit.destinypro.service.impl.definition;
 
 import com.github.fairit.destinypro.entity.GenderEntity;
-import com.github.fairit.destinypro.entity.api.charactergender.GenderSpecificApi;
 import com.github.fairit.destinypro.repository.GenderRepository;
 import com.github.fairit.destinypro.service.definition.DefinitionService;
 import org.modelmapper.ModelMapper;
@@ -34,10 +33,10 @@ public class GenderDefinitionServiceImpl implements DefinitionService {
     }
 
     private List<GenderEntity> getGenderEntities() {
-        List<GenderEntity> genderEntityList = new ArrayList<>();
+        var genderEntityList = new ArrayList<GenderEntity>();
 
-        for (final GenderSpecificApi genderSpecificApi : genderApiService.getListOfDefinition()) {
-            GenderEntity entity = modelMapper.map(genderSpecificApi, GenderEntity.class);
+        for (final var genderSpecificApi : genderApiService.getListOfDefinition()) {
+            var entity = modelMapper.map(genderSpecificApi, GenderEntity.class);
             genderEntityList.add(entity);
         }
         return genderEntityList;

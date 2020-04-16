@@ -1,7 +1,6 @@
 package com.github.fairit.destinypro.service.impl.definition;
 
 import com.github.fairit.destinypro.entity.ClassEntity;
-import com.github.fairit.destinypro.entity.api.characterclass.ClassSpecificApi;
 import com.github.fairit.destinypro.repository.ClassRepository;
 import com.github.fairit.destinypro.service.definition.DefinitionService;
 import org.modelmapper.ModelMapper;
@@ -34,10 +33,10 @@ public class ClassDefinitionServiceImpl implements DefinitionService {
     }
 
     private List<ClassEntity> getClassEntities() {
-        List<ClassEntity> classEntityList = new ArrayList<>();
+        var classEntityList = new ArrayList<ClassEntity>();
 
-        for (final ClassSpecificApi classSpecificApi : classApiService.getListOfDefinition()) {
-            ClassEntity entity = modelMapper.map(classSpecificApi, ClassEntity.class);
+        for (final var classSpecificApi : classApiService.getListOfDefinition()) {
+            var entity = modelMapper.map(classSpecificApi, ClassEntity.class);
             classEntityList.add(entity);
         }
         return classEntityList;

@@ -2,7 +2,6 @@ package com.github.fairit.destinypro.controller;
 
 import com.github.fairit.destinypro.dto.character.CharacterData;
 import com.github.fairit.destinypro.dto.character.Characters;
-import com.github.fairit.destinypro.dto.player.api.PlayerApi;
 import com.github.fairit.destinypro.dto.pvepvpstats.CharacterPve;
 import com.github.fairit.destinypro.dto.pvepvpstats.CharacterPvp;
 import com.github.fairit.destinypro.exception.CharacterNotFoundException;
@@ -29,11 +28,11 @@ public class PlayerController {
         this.statisticService = statisticService;
     }
 
+
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/findplayer/{nickname}")
     public Characters searchPlayerByNicknameAndShowCharacters(@PathVariable final String nickname) {
-        PlayerApi playerByNickname = playerService.findPlayerByNickname(nickname);
-        return characterService.getPlayerCharacters(playerByNickname);
+        return characterService.getPlayerCharacters(playerService.findPlayerByNickname(nickname));
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -46,7 +45,6 @@ public class PlayerController {
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/findplayer/{nickname}/pvestats/{characterId}")
     public CharacterPve showPveStatsForCharacter(@PathVariable final String nickname, @PathVariable final String characterId) {
-
         return statisticService
                 .getAveragedCharacterPveActivitiesStats(getCharacterStatsByNicknameAndCharacterId(nickname, characterId));
     }

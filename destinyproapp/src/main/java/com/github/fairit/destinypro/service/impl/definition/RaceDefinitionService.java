@@ -1,7 +1,6 @@
 package com.github.fairit.destinypro.service.impl.definition;
 
 import com.github.fairit.destinypro.entity.RaceEntity;
-import com.github.fairit.destinypro.entity.api.characterrace.RaceSpecificApi;
 import com.github.fairit.destinypro.repository.RaceRepository;
 import com.github.fairit.destinypro.service.definition.DefinitionService;
 import org.modelmapper.ModelMapper;
@@ -34,10 +33,10 @@ public class RaceDefinitionService implements DefinitionService {
     }
 
     private List<RaceEntity> getRaceEntities() {
-        List<RaceEntity> raceEntityList = new ArrayList<>();
+        var raceEntityList = new ArrayList<RaceEntity>();
 
-        for (final RaceSpecificApi raceSpecificApi : raceApiService.getListOfDefinition()) {
-            RaceEntity entity = modelMapper.map(raceSpecificApi, RaceEntity.class);
+        for (final var raceSpecificApi : raceApiService.getListOfDefinition()) {
+            var entity = modelMapper.map(raceSpecificApi, RaceEntity.class);
             raceEntityList.add(entity);
         }
         return raceEntityList;
