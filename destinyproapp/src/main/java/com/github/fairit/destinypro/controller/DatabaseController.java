@@ -1,7 +1,7 @@
 package com.github.fairit.destinypro.controller;
 
-import com.github.fairit.destinypro.service.impl.definition.ClassDefinitionServiceImpl;
-import com.github.fairit.destinypro.service.impl.definition.GenderDefinitionServiceImpl;
+import com.github.fairit.destinypro.service.impl.definition.ClassDefinitionService;
+import com.github.fairit.destinypro.service.impl.definition.GenderDefinitionService;
 import com.github.fairit.destinypro.service.impl.definition.RaceDefinitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DatabaseController {
 
-    private final ClassDefinitionServiceImpl classService;
-    private final GenderDefinitionServiceImpl genderService;
+    private final ClassDefinitionService classService;
+    private final GenderDefinitionService genderService;
     private final RaceDefinitionService raceService;
 
     @Autowired
-    public DatabaseController(final ClassDefinitionServiceImpl classService, final GenderDefinitionServiceImpl genderService,
+    public DatabaseController(final ClassDefinitionService classService, final GenderDefinitionService genderService,
                               final RaceDefinitionService raceService) {
         this.classService = classService;
         this.genderService = genderService;

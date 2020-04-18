@@ -1,6 +1,7 @@
 package com.github.fairit.destinypro.service.impl.definition;
 
 import com.github.fairit.destinypro.entity.ClassEntity;
+import com.github.fairit.destinypro.entity.GenderEntity;
 import com.github.fairit.destinypro.repository.ClassRepository;
 import com.github.fairit.destinypro.service.definition.DefinitionService;
 import org.modelmapper.ModelMapper;
@@ -10,17 +11,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-public class ClassDefinitionServiceImpl implements DefinitionService {
+public class ClassDefinitionService implements DefinitionService {
 
-    private final ClassDefinitionApiServiceImpl classApiService;
+    private final ClassDefinitionApiService classApiService;
     private final ClassRepository classRepository;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public ClassDefinitionServiceImpl(final ClassDefinitionApiServiceImpl classApiService, final ClassRepository classRepository,
-                                      final ModelMapper modelMapper) {
+    public ClassDefinitionService(final ClassDefinitionApiService classApiService, final ClassRepository classRepository,
+                                  final ModelMapper modelMapper) {
         this.classApiService = classApiService;
         this.classRepository = classRepository;
         this.modelMapper = modelMapper;
@@ -33,12 +35,9 @@ public class ClassDefinitionServiceImpl implements DefinitionService {
     }
 
     private List<ClassEntity> getClassEntities() {
-        var classEntityList = new ArrayList<ClassEntity>();
-
-        for (final var classSpecificApi : classApiService.getListOfDefinition()) {
-            var entity = modelMapper.map(classSpecificApi, ClassEntity.class);
-            classEntityList.add(entity);
-        }
-        return classEntityList;
+        return classApiService.getListOfDefinition()
+                .stream()
+                .map(def -> modelMapper.map(def, ClassEntity.class))
+                .collect(Collectors.toList());
     }
 }

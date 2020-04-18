@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class GenderDefinitionApiServiceImpl implements DefinitionApiService {
+public class GenderDefinitionApiServiceImpl implements DefinitionApiService<GenderSpecificApi> {
 
     private final RestTemplate restTemplate;
     private final DefinitionsUrlApiService definitionsUrlApiService;

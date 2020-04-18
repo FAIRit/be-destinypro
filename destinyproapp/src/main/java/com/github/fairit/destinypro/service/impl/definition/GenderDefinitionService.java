@@ -10,17 +10,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-public class GenderDefinitionServiceImpl implements DefinitionService {
+public class GenderDefinitionService implements DefinitionService {
 
     private final GenderDefinitionApiServiceImpl genderApiService;
     private final GenderRepository genderRepository;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public GenderDefinitionServiceImpl(final GenderDefinitionApiServiceImpl genderApiService, final GenderRepository genderRepository,
-                                       final ModelMapper modelMapper) {
+    public GenderDefinitionService(final GenderDefinitionApiServiceImpl genderApiService, final GenderRepository genderRepository,
+                                   final ModelMapper modelMapper) {
         this.genderApiService = genderApiService;
         this.genderRepository = genderRepository;
         this.modelMapper = modelMapper;
@@ -33,12 +34,9 @@ public class GenderDefinitionServiceImpl implements DefinitionService {
     }
 
     private List<GenderEntity> getGenderEntities() {
-        var genderEntityList = new ArrayList<GenderEntity>();
-
-        for (final var genderSpecificApi : genderApiService.getListOfDefinition()) {
-            var entity = modelMapper.map(genderSpecificApi, GenderEntity.class);
-            genderEntityList.add(entity);
-        }
-        return genderEntityList;
+        return genderApiService.getListOfDefinition()
+                .stream()
+                .map(def -> modelMapper.map(def, GenderEntity.class))
+                .collect(Collectors.toList());
     }
 }

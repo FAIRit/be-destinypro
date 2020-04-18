@@ -11,17 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ClassDefinitionApiServiceImpl implements DefinitionApiService {
+public class ClassDefinitionApiService implements DefinitionApiService<ClassSpecificApi> {
 
     private final RestTemplate restTemplate;
     private final DefinitionsUrlApiService definitionsUrlApiService;
 
     @Autowired
-    public ClassDefinitionApiServiceImpl(final RestTemplate restTemplate, final DefinitionsUrlApiService definitionsUrlApiService) {
+    public ClassDefinitionApiService(final RestTemplate restTemplate, final DefinitionsUrlApiService definitionsUrlApiService) {
         this.restTemplate = restTemplate;
         this.definitionsUrlApiService = definitionsUrlApiService;
     }
 
+    @Override
     public List<ClassSpecificApi> getListOfDefinition() {
         var classApiObject = restTemplate
                 .getForObject(definitionsUrlApiService.getClassApiAddress(), ClassApi.class);
